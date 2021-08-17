@@ -6,6 +6,7 @@ import LoginForm from './components/LoginForm';
 import BlogForm from './components/BlogForm';
 import Notification from './components/Notification';
 import './Index.css';
+import ErrorMessage from './components/Error';
 
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -47,7 +48,7 @@ const App = () => {
 			setUsername('');
 			setPassword('');
 		} catch (exception) {
-			setErrorMessage('Wrong credentials');
+			setErrorMessage('Invalid username or password.');
 			setTimeout(() => {
 				setErrorMessage(null);
 			}, 5000);
@@ -115,6 +116,7 @@ const App = () => {
 			<h2>Login to Blogs</h2>
 
 			<Notification message={notificationMessage} />
+			<ErrorMessage message={errorMessage} />
 
 			{user === null ? (
 				<LoginForm
