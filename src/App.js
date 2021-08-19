@@ -7,6 +7,7 @@ import BlogForm from './components/BlogForm';
 import Notification from './components/Notification';
 import './Index.css';
 import ErrorMessage from './components/Error';
+import Togglable from './components/Togglable';
 
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -80,29 +81,36 @@ const App = () => {
 			});
 	};
 
-	const handleNameChange = (event) => {
-		setUsername(event.target.value);
-	};
-	const handlePasswordChange = (event) => {
-		setPassword(event.target.value);
-	};
+	const loginForm = () => (
+		<Togglable buttonLabel="log in">
+			<LoginForm
+				username={username}
+				password={password}
+				handleUserNameChange={({ target }) => setUsername(target.value)}
+				handlePasswordChange={({ target }) => setPassword(target.value)}
+				handleLogin={handleLogin}
+			/>
+		</Togglable>
+	);
+
+	const blogForm = () => (
+		<Togglable buttonLabel="add new">
+			<BlogForm
+				addBlog={addBlog}
+				newTitle={newTitle}
+				newAuthor={newAuthor}
+				newUrl={newUrl}
+				handleTitleChange={({ target }) => setNewTitle(target.value)}
+				handleAuthorChange={({ target }) => setNewAuthor(target.value)}
+				handleUrlChange={({ target }) => setNewUrl(target.value)}
+			/>
+		</Togglable>
+	);
 
 	const handleLogout = () => {
 		console.log(`logging out`, user.name);
 		setUser(null);
 		window.localStorage.clear();
-	};
-
-	const handleTitleChange = (event) => {
-		setNewTitle(event.target.value);
-	};
-
-	const handleAuthorChange = (event) => {
-		setNewAuthor(event.target.value);
-	};
-
-	const handleUrlChange = (event) => {
-		setNewUrl(event.target.value);
 	};
 
 	const timeout = () => {
@@ -114,38 +122,25 @@ const App = () => {
 	return (
 		<div className="container">
 			<h2>Login to Blogs</h2>
-
 			<Notification message={notificationMessage} />
 			<ErrorMessage message={errorMessage} />
-
 			{user === null ? (
-				<LoginForm
-					username={username}
-					password={password}
-					handleNameChange={handleNameChange}
-					handlePasswordChange={handlePasswordChange}
-					handleLogin={handleLogin}
-				/>
+				loginForm()
 			) : (
-				<div className="container">
-					<h2>blogs</h2>
+				<div>
 					<p>
 						{user.name} logged in <button onClick={handleLogout}>logout</button>
 					</p>
-					<BlogForm
-						addBlog={addBlog}
-						newTitle={newTitle}
-						newAuthor={newAuthor}
-						newUrl={newUrl}
-						handleTitleChange={handleTitleChange}
-						handleAuthorChange={handleAuthorChange}
-						handleUrlChange={handleUrlChange}
-					/>
-					{blogs.map((blog) => (
-						<Blog key={blog.id} blog={blog} />
-					))}
+					{blogForm()}
 				</div>
 			)}
+
+			<div>
+				<h2>blogs</h2>
+				{blogs.map((blog) => (
+					<Blog key={blog.id} blog={blog} />
+				))}
+			</div>
 		</div>
 	);
 };
