@@ -9,8 +9,7 @@
 	margin: 0 auto;
 	font-size: 21px;
 	height: 1100px;
-	background-image: linear-gradient(90deg, #410076, #8820dd);
-	color: whitesmoke;
+	color: black;
 }
 
 p {
@@ -40,4 +39,8 @@ p {
 	border-radius: 5px;
 	padding: 10px;
 	margin-bottom: 10px;
+}
+
+.blogs {
+	list-style: none;
 }
