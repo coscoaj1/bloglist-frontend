@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import '../Index.css';
+import PropTypes from 'prop-types';
 
 const Blog = ({ blog, handleLike, handleDelete }) => {
 	const [toggle, setToggle] = useState(true);
@@ -26,17 +27,13 @@ const Blog = ({ blog, handleLike, handleDelete }) => {
 					<li>{blog.title}</li> <li>{blog.author}</li>
 					<li>{blog.url}</li>
 					<li>likes: {blog.likes}</li>
-					<Button
-						size="small"
-						color="primary"
-						onClick={(event) => handleLike(event, blog.id)}
-					>
+					<Button size="small" color="primary" onClick={() => handleLike(blog)}>
 						like
 					</Button>
 					<Button
 						size="small"
 						color="primary"
-						onClick={(event) => handleDelete(event, blog.id)}
+						onClick={() => handleDelete(blog)}
 					>
 						remove
 					</Button>
@@ -44,5 +41,11 @@ const Blog = ({ blog, handleLike, handleDelete }) => {
 			)}
 		</div>
 	);
+};
+
+Blog.propTypes = {
+	blog: PropTypes.object.isRequired,
+	handleLike: PropTypes.func.isRequired,
+	handleDelete: PropTypes.func.isRequired,
 };
 export default Blog;

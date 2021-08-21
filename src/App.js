@@ -20,7 +20,7 @@ const App = () => {
 
 	useEffect(() => {
 		blogService.getAll().then((blogs) => setBlogs(blogs));
-	}, [user]);
+	}, []);
 
 	useEffect(() => {
 		const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser');
@@ -69,37 +69,27 @@ const App = () => {
 			});
 	};
 
-	const addLike = (event, id) => {
-		const blogToLike = blogs.find((blog) => blog.id === id);
-		console.log(blogToLike);
-		const updatedBlog = {
-			...blogToLike,
-			likes: blogToLike.likes + 1,
-			user: blogToLike.user.id,
-		};
-		blogService //
-			.update(id, updatedBlog)
-			.then((returnedBlog) => {
-				setBlogs(blogs.concat(returnedBlog));
-				console.log(`incremented ${returnedBlog.title} likes`);
-			})
-			.catch((error) => {
-				console.log(error.response.data);
-			});
+	const handleLikeChange = async (blog) => {
+		await blogService.update(blog.id, {
+			title: blog.title,
+			author: blog.author,
+			url: blog.url,
+			likes: blog.likes + 1,
+		});
+
+		const blogs = await blogService.getAll();
+		setBlogs(blogs);
 	};
 
-	const deleteBlog = (event, id) => {
-		const blogToDelete = blogs.find((blog) => blog.id === id);
-		console.log(blogToDelete);
-		const confirmDelete = window.confirm(`Delete ${blogToDelete.title}?`);
-		if (confirmDelete) {
-			blogService //
-				.deleteBlog(id, blogToDelete)
-				.then(() => {
-					const filteredBlogs = blogs.filter((blog) => blog.id !== id);
-					setBlogs(filteredBlogs);
-					setNotificationMessage(`Deleted ${blogToDelete.title}`);
-				});
+	const handleDelete = async (blog) => {
+		if (window.confirm(`Delete ${blog.title}?`)) {
+			await blogService.remove(blog.id);
+
+			let blogs = await blogService.getAll();
+			setBlogs(blogs);
+
+			setNotificationMessage(`Deleted ${blog.title}`);
+			timeout();
 		}
 	};
 
@@ -162,11 +152,11 @@ const App = () => {
 				{blogs
 					.sort((a, b) => b.likes - a.likes)
 					.map((blog) => (
-						<div>
+						<div key={blog.id}>
 							<Blog
-								handleLike={addLike}
-								handleDelete={deleteBlog}
-								key={blog.id}
+								handleLike={handleLikeChange}
+								handleDelete={handleDelete}
+								key={blog.title}
 								blog={blog}
 							/>
 						</div>
