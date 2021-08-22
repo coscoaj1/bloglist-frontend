@@ -34,46 +34,55 @@ const BlogForm = ({ createBlog }) => {
 	};
 
 	return (
-		<form onSubmit={addBlog}>
-			<div>
-				<h2>create new</h2>
+		<div className="formDiv">
+			<form onSubmit={addBlog}>
 				<div>
-					title:{' '}
-					<input
-						className="input"
-						value={newTitle}
-						onChange={handleTitleChange}
-					/>
-				</div>
-			</div>
-			<div>
-				<div>
-					author:{' '}
-					<input
-						className="input"
-						value={newAuthor}
-						onChange={handleAuthorChange}
-					/>
-				</div>
-			</div>
-			<div>
-				<div>
-					url:{' '}
-					<input className="input" value={newUrl} onChange={handleUrlChange} />
+					<h2>create new</h2>
+					<div>
+						title:{' '}
+						<input
+							id="title"
+							className="input"
+							value={newTitle}
+							onChange={handleTitleChange}
+						/>
+					</div>
 				</div>
 				<div>
-					<Button
-						variant="contained"
-						color="primary"
-						size="small"
-						startIcon={<SaveIcon />}
-						type="submit"
-					>
-						Add
-					</Button>
+					<div>
+						author:{' '}
+						<input
+							id="author"
+							className="input"
+							value={newAuthor}
+							onChange={handleAuthorChange}
+						/>
+					</div>
 				</div>
-			</div>
-		</form>
+				<div>
+					<div>
+						url:{' '}
+						<input
+							id="url"
+							className="input"
+							value={newUrl}
+							onChange={handleUrlChange}
+						/>
+					</div>
+					<div>
+						<Button
+							variant="contained"
+							color="primary"
+							size="small"
+							startIcon={<SaveIcon />}
+							type="submit"
+						>
+							Add
+						</Button>
+					</div>
+				</div>
+			</form>
+		</div>
 	);
 };
 
