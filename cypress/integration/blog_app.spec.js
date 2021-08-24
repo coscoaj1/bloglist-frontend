@@ -46,6 +46,7 @@ describe('Blog app', function () {
 			cy.get('#title').type('test blog');
 			cy.get('#author').type('test blog');
 			cy.get('#url').type('test blog');
+			cy.get('#add-button').click();
 			cy.contains('test blog');
 		});
 	});

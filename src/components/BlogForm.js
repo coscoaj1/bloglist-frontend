@@ -71,6 +71,7 @@ const BlogForm = ({ createBlog }) => {
 					</div>
 					<div>
 						<Button
+							id="add-button"
 							variant="contained"
 							color="primary"
 							size="small"
