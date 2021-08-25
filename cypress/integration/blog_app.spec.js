@@ -56,5 +56,12 @@ describe('Blog app', function () {
 			cy.get('#likeButton').click();
 			cy.contains('likes: 1');
 		});
+
+		it('blog can be removed', function () {
+			cy.addBlog({ title: 'test', author: 'test', url: 'test' });
+			cy.contains('view').click();
+			cy.get('#removeButton').click();
+			cy.contains('Deleted test');
+		});
 	});
 });

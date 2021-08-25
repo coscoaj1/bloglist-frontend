@@ -36,6 +36,7 @@ const Blog = ({ blog, handleLike, handleDelete }) => {
 						like
 					</Button>
 					<Button
+						id="removeButton"
 						size="small"
 						color="primary"
 						onClick={() => handleDelete(blog)}
