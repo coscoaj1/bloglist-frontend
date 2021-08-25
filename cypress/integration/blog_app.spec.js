@@ -49,5 +49,12 @@ describe('Blog app', function () {
 			cy.get('#add-button').click();
 			cy.contains('test blog');
 		});
+
+		it('like button works', function () {
+			cy.addBlog({ title: 'test', author: 'test', url: 'test' });
+			cy.contains('view').click();
+			cy.get('#likeButton').click();
+			cy.contains('likes: 1');
+		});
 	});
 });

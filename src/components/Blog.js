@@ -27,7 +27,12 @@ const Blog = ({ blog, handleLike, handleDelete }) => {
 					<li>{blog.title}</li> <li>{blog.author}</li>
 					<li>{blog.url}</li>
 					<li>likes: {blog.likes}</li>
-					<Button size="small" color="primary" onClick={() => handleLike(blog)}>
+					<Button
+						id="likeButton"
+						size="small"
+						color="primary"
+						onClick={() => handleLike(blog)}
+					>
 						like
 					</Button>
 					<Button
