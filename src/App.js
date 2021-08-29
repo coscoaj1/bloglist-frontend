@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Blog from './components/Blog';
 import blogService from './services/blogs';
 import loginService from './services/login';
+import userService from './services/users';
 import LoginForm from './components/LoginForm';
 import BlogForm from './components/BlogForm';
 import Notification from './components/Notification';
+import Users from './components/Users';
 import './Index.css';
 import ErrorMessage from './components/Error';
 import Togglable from './components/Togglable';
 import { Button } from '@material-ui/core';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -17,9 +20,14 @@ const App = () => {
 	const [user, setUser] = useState(null);
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [notificationMessage, setNotificationMessage] = useState(null);
+	const [users, setUsers] = useState([]);
 
 	useEffect(() => {
 		blogService.getAll().then((blogs) => setBlogs(blogs));
+	}, []);
+
+	useEffect(() => {
+		userService.getUsers().then((users) => setUsers(users));
 	}, []);
 
 	useEffect(() => {
@@ -96,6 +104,7 @@ const App = () => {
 
 	const loginForm = () => (
 		<Togglable buttonLabel="log in">
+			<h2> Login</h2>
 			<LoginForm
 				username={username}
 				password={password}
@@ -125,45 +134,56 @@ const App = () => {
 	};
 
 	return (
-		<div className="container">
-			<h2>Login to Blogs</h2>
-			<Notification message={notificationMessage} />
-			<ErrorMessage message={errorMessage} />
-			{user === null ? (
-				loginForm()
-			) : (
+		<Router>
+			<div className="container">
 				<div>
-					<p>
-						{user.name} logged in{' '}
-						<Button
-							size="small"
-							variant="contained"
-							color="secondary"
-							onClick={handleLogout}
-						>
-							logout
-						</Button>
-					</p>
-					{blogForm()}
+					<Link to="/">home</Link>
+					<Link to="blogs">blogs</Link>
+					<Link to="users">users</Link>
 				</div>
-			)}
-
-			<div>
-				<h2>blogs</h2>
-				{blogs
-					.sort((a, b) => b.likes - a.likes)
-					.map((blog) => (
-						<div key={blog.id}>
-							<Blog
-								handleLike={handleLikeChange}
-								handleDelete={handleDelete}
-								key={blog.title}
-								blog={blog}
-							/>
-						</div>
-					))}
+				<Switch>
+					<Route path="/users">
+						<Users users={users} />
+					</Route>
+				</Switch>
+				<h2>Cat Blogs app</h2>
+				<Notification message={notificationMessage} />
+				<ErrorMessage message={errorMessage} />
+				{user === null ? (
+					loginForm()
+				) : (
+					<div>
+						<p>
+							{user.name} logged in{' '}
+							<Button
+								size="small"
+								variant="contained"
+								color="secondary"
+								onClick={handleLogout}
+							>
+								logout
+							</Button>
+						</p>
+						{blogForm()}
+					</div>
+				)}
+				<div>
+					<h2>blogs</h2>
+					{blogs
+						.sort((a, b) => b.likes - a.likes)
+						.map((blog) => (
+							<div key={blog.id}>
+								<Blog
+									handleLike={handleLikeChange}
+									handleDelete={handleDelete}
+									key={blog.title}
+									blog={blog}
+								/>
+							</div>
+						))}
+				</div>
 			</div>
-		</div>
+		</Router>
 	);
 };
 
