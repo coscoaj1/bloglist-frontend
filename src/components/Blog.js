@@ -1,57 +1,72 @@
 import { React, useState } from 'react';
-import Button from '@material-ui/core/Button';
 import '../Index.css';
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import { IconButton } from '@material-ui/core';
 
-const Blog = ({ blog, handleLike, handleDelete }) => {
-	const [toggle, setToggle] = useState(true);
+const useStyles = makeStyles({
+	root: {
+		minWidth: 275,
+		maxWidth: 345,
+		backgroundColor: '#424242',
+		color: 'white',
+	},
+	bullet: {
+		display: 'inline-block',
+		margin: '0 2px',
+		transform: 'scale(0.8)',
+	},
+	title: {
+		fontSize: 22,
+	},
+	pos: {
+		marginBottom: 12,
+	},
+});
 
-	const toggler = () => {
-		toggle ? setToggle(false) : setToggle(true);
-	};
+const Blog = ({ blogs, handleLike, handleDelete }) => {
+	const classes = useStyles();
+	const id = useParams().id;
+	const blog = blogs.find((b) => b.id === String(id));
+	console.log(blog);
+	if (!blog) {
+		return null;
+	}
 
 	return (
-		<div>
-			{toggle ? (
-				<span>
-					{blog.title} {blog.author}
-					<Button size="small" color="primary" onClick={toggler}>
-						view
-					</Button>
-				</span>
-			) : (
-				<ul className="blogs">
-					<Button size="small" color="primary" onClick={toggler}>
-						hide
-					</Button>
-					<li>{blog.title}</li> <li>{blog.author}</li>
-					<li>{blog.url}</li>
-					<li>likes: {blog.likes}</li>
-					<Button
-						id="likeButton"
-						size="small"
-						color="primary"
-						onClick={() => handleLike(blog)}
-					>
-						like
-					</Button>
-					<Button
-						id="removeButton"
-						size="small"
-						color="primary"
-						onClick={() => handleDelete(blog)}
-					>
-						remove
-					</Button>
-				</ul>
-			)}
-		</div>
+		<Card variant="outlined" className={classes.root}>
+			<CardContent>
+				<Typography className={classes.title}>{blog.title}</Typography>{' '}
+				<Typography>{blog.author}</Typography>
+				<Typography>{blog.url}</Typography>
+				<Typography>{blog.likes} likes</Typography>
+				<IconButton
+					id="likeButton"
+					size="small"
+					color="primary"
+					onClick={() => handleLike(blog)}
+				>
+					<ThumbUpIcon />
+				</IconButton>
+			</CardContent>
+		</Card>
 	);
 };
 
-// Blog.propTypes = {
-// 	blog: PropTypes.object.isRequired,
-// 	handleLike: PropTypes.func.isRequired,
-// 	handleDelete: PropTypes.func.isRequired,
-// };
 export default Blog;
+
+// 	like
+// <Button
+// 	id="removeButton"
+// 	size="small"
+// 	color="primary"
+// 	onClick={() => handleDelete(blog)}
+// >
+// 	remove
+// </Button>
