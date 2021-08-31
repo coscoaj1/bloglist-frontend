@@ -1,4 +1,5 @@
-import { MenuIcon } from '@material-ui/icons/Menu';
+import { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import {
 	Drawer,
 	List,
@@ -7,38 +8,69 @@ import {
 	ListItemIcon,
 	IconButton,
 } from '@material-ui/core';
-import { useState } from 'react';
+import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import PeopleIcon from '@material-ui/icons/People';
 
+import DescriptionIcon from '@material-ui/icons/Description';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { palette } from '@material-ui/system';
+
+const useStyles = makeStyles((theme) => ({
+	drawerPaper: {
+		backgroundColor: theme.palette.common.drawer,
+	},
+	link: {
+		color: 'white',
+	},
+	icon: {
+		color: 'yellow',
+	},
+}));
 const DrawerComponent = () => {
-	const [openDrawer, setOpenDrawer] = useState(true);
+	const [openDrawer, setOpenDrawer] = useState(false);
+	const classes = useStyles();
 
 	return (
-		<div>
-			<Drawer onClose={() => setOpenDrawer(false)} open={openDrawer}>
+		<>
+			<Drawer
+				classes={{ paper: classes.drawerPaper }}
+				anchor="right"
+				onClose={() => setOpenDrawer(false)}
+				open={openDrawer}
+			>
 				<List>
 					<ListItem divider button>
 						<ListItemIcon>
+							<HomeIcon />
 							<ListItemText>HOME</ListItemText>
 						</ListItemIcon>
 					</ListItem>
 					<ListItem divider button>
 						<ListItemIcon>
-							<ListItemText>BLOGS</ListItemText>
+							<DescriptionIcon />
+							<ListItemText> BLOGS</ListItemText>
 						</ListItemIcon>
 					</ListItem>
 					<ListItem divider button>
 						<ListItemIcon>
-							<ListItemText>USERS</ListItemText>
+							<PeopleIcon />
+							<ListItemText> USERS</ListItemText>
 						</ListItemIcon>
 					</ListItem>
 					<ListItem divider button>
 						<ListItemIcon>
-							<ListItemText>LOGIN</ListItemText>
+							<AccountCircleIcon />
+							<ListItemText> LOGIN</ListItemText>
 						</ListItemIcon>
 					</ListItem>
 				</List>
 			</Drawer>
-		</div>
+
+			<IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+				<MenuIcon anchor="right" />
+			</IconButton>
+		</>
 	);
 };
 

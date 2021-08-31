@@ -1,9 +1,5 @@
 import Blog from './Blog';
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from 'react-router-dom';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,17 +9,21 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+
 const useStyles = makeStyles((theme) => ({
 	table: {
 		maxWidth: 500,
 		fontSize: 22,
+	},
+	link: {
+		textDecoration: 'none',
 	},
 }));
 
 const Blogs = ({ blogs, handleDelete, handleLike }) => {
 	const classes = useStyles();
 	return (
-		<TableContainer component={Paper} className={classes.root}>
+		<TableContainer>
 			<Table>
 				<TableHead>
 					<TableRow>
@@ -42,7 +42,7 @@ const Blogs = ({ blogs, handleDelete, handleLike }) => {
 							<TableRow button="true" key={blog.id}>
 								<TableCell>
 									<Typography variant="h6">
-										<Link className="link" to={`blogs/${blog.id}`}>
+										<Link className={classes.link} to={`blogs/${blog.id}`}>
 											{blog.title}
 										</Link>
 									</Typography>

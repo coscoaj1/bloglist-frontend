@@ -1,6 +1,5 @@
 :root {
 	font-family: Roboto, sans-serif;
-	background-color: #121212;
 }
 
 .container {
@@ -10,7 +9,6 @@
 	margin: 0 auto;
 	font-size: 21px;
 	height: 1100px;
-	color: black;
 }
 
 p {
@@ -44,12 +42,4 @@ p {
 
 .blogs {
 	list-style: none;
-}
-
-.table {
-	background-color: darkgray;
-}
-
-.link {
-	text-decoration: none;
 }

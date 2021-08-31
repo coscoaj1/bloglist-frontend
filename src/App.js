@@ -3,7 +3,6 @@ import blogService from './services/blogs';
 import loginService from './services/login';
 import userService from './services/users';
 import LoginForm from './components/LoginForm';
-import BlogForm from './components/BlogForm';
 import Blogs from './components/Blogs';
 import Blog from './components/Blog';
 import Notification from './components/Notification';
@@ -12,9 +11,13 @@ import User from './components/User';
 import DrawerComponent from './components/DrawerComponent';
 import './Index.css';
 import ErrorMessage from './components/Error';
-import { Button, AppBar, Toolbar, IconButton, Drawer } from '@material-ui/core';
-import Container from '@material-ui/core/Container';
-import MenuIcon from '@material-ui/icons/Menu';
+import {
+	Button,
+	AppBar,
+	Toolbar,
+	Typography,
+	Container,
+} from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -134,12 +137,10 @@ const App = () => {
 				<AppBar position="static">
 					<Toolbar>
 						{isMatch ? (
-							<IconButton edge="start" color="inherit" aria-label="menu">
-								<MenuIcon />
-							</IconButton>
+							<DrawerComponent />
 						) : (
 							<div>
-								<Button color="inherit" align="right" component={Link} to="/">
+								<Button color="inherit" component={Link} to="/">
 									home
 								</Button>
 								<Button color="inherit" component={Link} to="/blogs">
@@ -169,7 +170,7 @@ const App = () => {
 						)}
 					</Toolbar>
 				</AppBar>
-				<h2>Cat Blogs app</h2>
+				<Typography variant="h2">Cat Blogs app</Typography>
 				<Switch>
 					<Route path="/users/:id">
 						<User users={users} />

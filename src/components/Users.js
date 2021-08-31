@@ -10,6 +10,7 @@ import {
 	Paper,
 	TableRow,
 	TableCell,
+	Typography,
 } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -22,31 +23,49 @@ const useStyles = makeStyles({
 		height: 48,
 		padding: '0 30px',
 	},
+
+	link: {
+		textDecoration: 'none',
+	},
 });
 
-const Users = ({ users }) => (
-	<div>
-		<TableContainer className="table" component={Paper}>
-			<Table aria-label="simple table">
-				<TableHead>
-					<TableRow>
-						<TableCell>Users</TableCell>
-						<TableCell>Blogs created</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{users.map((user) => (
-						<TableRow key={user.id}>
-							<TableCell component="th" scope="row">
-								<Link to={`/users/${user.id}`}>{user.name}</Link>
+const Users = ({ users }) => {
+	const classes = useStyles();
+
+	return (
+		<div>
+			<TableContainer className="table" component={Paper}>
+				<Table aria-label="simple table">
+					<TableHead>
+						<TableRow>
+							<TableCell>
+								<Typography>Users</Typography>
 							</TableCell>
-							<TableCell>{user.blogs.length}</TableCell>
+							<TableCell>
+								<Typography>Blogs created</Typography>
+							</TableCell>
 						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</TableContainer>
-	</div>
-);
+					</TableHead>
+					<TableBody>
+						{users.map((user) => (
+							<TableRow key={user.id}>
+								<TableCell component="th" scope="row">
+									<Typography variant="h5">
+										<Link className={classes.link} to={`/users/${user.id}`}>
+											{user.name}
+										</Link>
+									</Typography>
+								</TableCell>
+								<TableCell>
+									<Typography>{user.blogs.length}</Typography>
+								</TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</TableContainer>
+		</div>
+	);
+};
 
 export default Users;
