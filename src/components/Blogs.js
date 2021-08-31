@@ -12,31 +12,44 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
 	table: {
 		maxWidth: 500,
+		fontSize: 22,
 	},
 }));
 
 const Blogs = ({ blogs, handleDelete, handleLike }) => {
 	const classes = useStyles();
 	return (
-		<TableContainer component={Paper}>
-			<Table className={classes.table} component="nav">
+		<TableContainer component={Paper} className={classes.root}>
+			<Table>
 				<TableHead>
 					<TableRow>
-						<TableCell>blogs</TableCell>
-						<TableCell align="left"> Author</TableCell>
+						<TableCell>
+							<Typography variant="h5">blogs</Typography>
+						</TableCell>
+						<TableCell align="left">
+							<Typography variant="h5"> Author</Typography>
+						</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
 					{blogs
 						.sort((a, b) => b.likes - a.likes)
 						.map((blog) => (
-							<TableRow button key={blog.id}>
+							<TableRow button="true" key={blog.id}>
 								<TableCell>
-									<Link to={`blogs/${blog.id}`}>{blog.title}</Link>
+									<Typography variant="h6">
+										<Link className="link" to={`blogs/${blog.id}`}>
+											{blog.title}
+										</Link>
+									</Typography>
+								</TableCell>
+
+								<TableCell>
+									<Typography variant="subtitle1">{blog.author}</Typography>
 								</TableCell>
 							</TableRow>
 						))}

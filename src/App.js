@@ -9,10 +9,15 @@ import Blog from './components/Blog';
 import Notification from './components/Notification';
 import Users from './components/Users';
 import User from './components/User';
+import DrawerComponent from './components/DrawerComponent';
 import './Index.css';
 import ErrorMessage from './components/Error';
-import { Button, AppBar, Toolbar, IconButton } from '@material-ui/core';
+import { Button, AppBar, Toolbar, IconButton, Drawer } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
+import MenuIcon from '@material-ui/icons/Menu';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -119,41 +124,48 @@ const App = () => {
 		}, 5000);
 	};
 
+	const theme = useTheme();
+	const isMatch = useMediaQuery(theme.breakpoints.down('xs'));
+	console.log(isMatch);
+
 	return (
 		<Router>
 			<Container>
 				<AppBar position="static">
 					<Toolbar>
-						<IconButton
-							edge="start"
-							color="inherit"
-							aria-label="menu"
-						></IconButton>
-						<Button color="inherit" component={Link} to="/">
-							home
-						</Button>
-						<Button color="inherit" component={Link} to="/blogs">
-							blogs
-						</Button>
-						<Button color="inherit" component={Link} to="/users">
-							users
-						</Button>
-						{user ? (
-							<div>
-								<em>{user.name} logged in</em>{' '}
-								<Button
-									size="small"
-									variant="contained"
-									color="secondary"
-									onClick={handleLogout}
-								>
-									logout
-								</Button>
-							</div>
+						{isMatch ? (
+							<IconButton edge="start" color="inherit" aria-label="menu">
+								<MenuIcon />
+							</IconButton>
 						) : (
-							<Button color="inherit" component={Link} to="/login">
-								login
-							</Button>
+							<div>
+								<Button color="inherit" align="right" component={Link} to="/">
+									home
+								</Button>
+								<Button color="inherit" component={Link} to="/blogs">
+									blogs
+								</Button>
+								<Button color="inherit" component={Link} to="/users">
+									users
+								</Button>
+								{user ? (
+									<div>
+										<em>{user.name} logged in</em>{' '}
+										<Button
+											size="small"
+											variant="contained"
+											color="secondary"
+											onClick={handleLogout}
+										>
+											logout
+										</Button>
+									</div>
+								) : (
+									<Button color="inherit" component={Link} to="/login">
+										login
+									</Button>
+								)}
+							</div>
 						)}
 					</Toolbar>
 				</AppBar>

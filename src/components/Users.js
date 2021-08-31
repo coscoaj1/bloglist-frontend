@@ -18,39 +18,35 @@ const useStyles = makeStyles({
 		border: 0,
 		borderRadius: 3,
 		boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-		color: 'black',
+		color: 'white',
 		height: 48,
 		padding: '0 30px',
 	},
 });
 
-const Users = ({ users }) => {
-	const classes = useStyles();
-
-	return (
-		<div>
-			<TableContainer component={Paper}>
-				<Table aria-label="simple table">
-					<TableHead>
-						<TableRow>
-							<TableCell>Users</TableCell>
-							<TableCell>Blogs created</TableCell>
+const Users = ({ users }) => (
+	<div>
+		<TableContainer className="table" component={Paper}>
+			<Table aria-label="simple table">
+				<TableHead>
+					<TableRow>
+						<TableCell>Users</TableCell>
+						<TableCell>Blogs created</TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{users.map((user) => (
+						<TableRow key={user.id}>
+							<TableCell component="th" scope="row">
+								<Link to={`/users/${user.id}`}>{user.name}</Link>
+							</TableCell>
+							<TableCell>{user.blogs.length}</TableCell>
 						</TableRow>
-					</TableHead>
-					<TableBody>
-						{users.map((user) => (
-							<TableRow key={user.id}>
-								<TableCell component="th" scope="row">
-									<Link to={`/users/${user.id}`}>{user.name}</Link>
-								</TableCell>
-								<TableCell>{user.blogs.length}</TableCell>
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</TableContainer>
-		</div>
-	);
-};
+					))}
+				</TableBody>
+			</Table>
+		</TableContainer>
+	</div>
+);
 
 export default Users;

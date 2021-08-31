@@ -49,3 +49,7 @@ p {
 .table {
 	background-color: darkgray;
 }
+
+.link {
+	text-decoration: none;
+}
