@@ -91,6 +91,29 @@ const App = () => {
 			});
 	};
 
+	const addComment = async (blog) => {
+		await blogService.comment(blog.id, {
+			comments: blog.comment,
+		});
+		const blogs = await blogService.getAll();
+		setBlogs(blogs);
+	};
+
+	// const addComment = (blog) => {
+	// 	console.log(blog);
+	// 	blogService //
+	// 		.comment(blog.id, {
+	// 			comments: blog.comment,
+	// 		})
+	// 		.then((returnedBlog) => {
+	// 			setBlogs(blogs.concat(returnedBlog));
+	// 		})
+
+	// 		.catch((error) => {
+	// 			console.log(error.response.data);
+	// 		});
+	// };
+
 	const handleLike = async (blog) => {
 		await blogService.update(blog.id, {
 			title: blog.title,
@@ -129,7 +152,6 @@ const App = () => {
 
 	const theme = useTheme();
 	const isMatch = useMediaQuery(theme.breakpoints.down('xs'));
-	console.log(isMatch);
 
 	return (
 		<Router>
@@ -176,7 +198,12 @@ const App = () => {
 						<User users={users} />
 					</Route>
 					<Route path="/blogs/:id">
-						<Blog blogs={blogs} handleLike={handleLike}></Blog>
+						<Blog
+							handleDelete={handleDelete}
+							blogs={blogs}
+							createComment={addComment}
+							handleLike={handleLike}
+						></Blog>
 					</Route>
 					<Route path="/users">
 						<Users users={users} />
