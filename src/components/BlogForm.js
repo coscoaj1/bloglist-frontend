@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import '../Index.css';
 import { Typography } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useFormik } from 'formik';
 
 const useStyles = makeStyles({
 	field: {
@@ -13,40 +13,25 @@ const useStyles = makeStyles({
 });
 
 const BlogForm = ({ createBlog }) => {
-	
-	const [newTitle, setNewTitle] = useState('');
-	const [newAuthor, setNewAuthor] = useState('');
-	const [newUrl, setNewUrl] = useState('');
 
+	const formik = useFormik({
+		initialValues: {
+			title: '',
+			author: '',
+			url: '',
+		},
+			onSubmit: values => {
+				console.log(values)
+				createBlog({
+					title: formik.values.title,
+					author: formik.values.author,
+					url: formik.values.url,
+				})
+			}})
+			
 	const classes = useStyles();
-
-	const handleTitleChange = (event) => {
-		setNewTitle(event.target.value);
-	};
-
-	const handleAuthorChange = (event) => {
-		setNewAuthor(event.target.value);
-	};
-
-	const handleUrlChange = (event) => {
-		setNewUrl(event.target.value);
-	};
-
-	const addBlog = (event) => {
-		event.preventDefault();
-		createBlog({
-			title: newTitle,
-			author: newAuthor,
-			url: newUrl,
-		});
-
-		setNewTitle('');
-		setNewAuthor('');
-		setNewUrl('');
-	};
-
 	return (
-		<form autoComplete="off" onSubmit={addBlog}>
+		<form autoComplete="off" onSubmit={formik.handleSubmit}>
 			<Typography variant="h5">add new blog</Typography>
 
 			<div>
@@ -55,12 +40,12 @@ const BlogForm = ({ createBlog }) => {
 					variant="outlined"
 					label="title"
 					fullWidth={true}
-					value={newTitle}
-					onChange={handleTitleChange}
+					value={formik.values.title}
+					onChange={formik.handleChange}
 					className={classes.field}
 					margin="normal"
-
-				/>
+					
+					/>
 			</div>
 
 			<div>
@@ -69,24 +54,23 @@ const BlogForm = ({ createBlog }) => {
 					variant="outlined"
 					label="author"
 					fullWidth={true}
-					value={newAuthor}
-					onChange={handleAuthorChange}
-					className={classes.field}
+					value={formik.values.author}
+					onChange={formik.handleChange}
 					margin="normal"
-				/>
+					/>
 			</div>
 			<div>
 				<TextField
 					id="url"
 					variant="outlined"
 					label="url:"
-					value={newUrl}
+					value={formik.values.url}
 					fullWidth={true}
 					margin="normal"
 
-					onChange={handleUrlChange}
+					onChange={formik.handleChange}
 					className={classes.field}
-				/>
+					/>
 			</div>
 			<div>
 				<Button
@@ -96,7 +80,7 @@ const BlogForm = ({ createBlog }) => {
 					startIcon={<SaveIcon />}
 					type="submit"
 					size="large"
-				>
+					>
 					Add
 				</Button>
 			</div>
@@ -105,3 +89,11 @@ const BlogForm = ({ createBlog }) => {
 };
 
 export default BlogForm;
+
+// const addBlog = (event) => {
+// 	event.preventDefault();
+// 	createBlog({
+// 		title: newTitle,
+// 		author: newAuthor,
+// 		url: newUrl,
+// 	});
