@@ -2,6 +2,7 @@
 
 :root {
 	font-family: Roboto, sans-serif;
+	background-color: black;
 }
 
 .container {
@@ -15,16 +16,6 @@
 
 p {
 	padding: 10px;
-}
-.searchInputs {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.input {
-	height: 30px;
-	width: 200px;
 }
 
 #searchIcon {

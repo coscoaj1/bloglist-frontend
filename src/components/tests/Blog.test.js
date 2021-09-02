@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
-import Blog from './Blog';
+import Blog from '../Blog';
 
 const blog = {
 	title: 'cry time 3-5AM',

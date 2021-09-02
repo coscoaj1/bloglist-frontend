@@ -1,3 +1,4 @@
+import { TextField } from '@material-ui/core';
 const LoginForm = ({
 	username,
 	password,
@@ -9,11 +10,19 @@ const LoginForm = ({
 		<form onSubmit={handleLogin}>
 			<div>
 				username:
-				<input id="username" value={username} onChange={handleUserNameChange} />
+				<TextField
+					id="username"
+					value={username}
+					onChange={handleUserNameChange}
+				/>
 			</div>
 			<div>
 				password
-				<input id="password" value={password} onChange={handlePasswordChange} />
+				<TextField
+					id="password"
+					value={password}
+					onChange={handlePasswordChange}
+				/>
 			</div>
 			<button id="login-button" type="submit">
 				login

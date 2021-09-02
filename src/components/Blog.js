@@ -1,6 +1,5 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
 import '../Index.css';
-import clsx from 'clsx';
 import { useParams } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -10,9 +9,9 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import TextField from '@material-ui/core/TextField';
-import { IconButton, CardActions, Collapse } from '@material-ui/core';
+import { IconButton, CardActions } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	root: {
 		minWidth: 275,
 		maxWidth: 345,

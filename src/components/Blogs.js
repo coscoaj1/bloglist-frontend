@@ -1,4 +1,3 @@
-import Blog from './Blog';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Table from '@material-ui/core/Table';
@@ -10,20 +9,21 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
 	table: {
 		maxWidth: 500,
 		fontSize: 22,
 	},
 	link: {
 		textDecoration: 'none',
+		color: 'white',
 	},
-}));
+});
 
-const Blogs = ({ blogs, handleDelete, handleLike }) => {
+const Blogs = ({ blogs }) => {
 	const classes = useStyles();
 	return (
-		<TableContainer>
+		<TableContainer component={Paper}>
 			<Table>
 				<TableHead>
 					<TableRow>

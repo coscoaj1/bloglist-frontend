@@ -11,6 +11,7 @@ const theme = createTheme({
 		common: {
 			drawer: '#b7b7a4',
 		},
+		type: 'dark',
 	},
 	typography: {
 		fontFamily: 'Quicksand',

@@ -1,33 +1,26 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import blogService from './services/blogs';
 import loginService from './services/login';
 import userService from './services/users';
 import LoginForm from './components/LoginForm';
+import BlogForm from './components/BlogForm';
 import Blogs from './components/Blogs';
+import Layout from './components/Layout';
 import Blog from './components/Blog';
 import Notification from './components/Notification';
 import Users from './components/Users';
 import User from './components/User';
-import DrawerComponent from './components/DrawerComponent';
 import './Index.css';
 import ErrorMessage from './components/Error';
-import {
-	Button,
-	AppBar,
-	Toolbar,
-	Typography,
-	Container,
-} from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Typography, Container } from '@material-ui/core';
 
 import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
-	Link,
 	Redirect,
 } from 'react-router-dom';
+import NavBar from './components/NavBar';
 
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -99,21 +92,6 @@ const App = () => {
 		setBlogs(blogs);
 	};
 
-	// const addComment = (blog) => {
-	// 	console.log(blog);
-	// 	blogService //
-	// 		.comment(blog.id, {
-	// 			comments: blog.comment,
-	// 		})
-	// 		.then((returnedBlog) => {
-	// 			setBlogs(blogs.concat(returnedBlog));
-	// 		})
-
-	// 		.catch((error) => {
-	// 			console.log(error.response.data);
-	// 		});
-	// };
-
 	const handleLike = async (blog) => {
 		await blogService.update(blog.id, {
 			title: blog.title,
@@ -150,106 +128,77 @@ const App = () => {
 		}, 5000);
 	};
 
-	const theme = useTheme();
-	const isMatch = useMediaQuery(theme.breakpoints.down('xs'));
-
 	return (
 		<Router>
-			<Container>
-				<AppBar position="static">
-					<Toolbar>
-						{isMatch ? (
-							<DrawerComponent />
+			<Layout>
+				<Container>
+					<NavBar user={user} handleLogout={handleLogout} />
+					<Typography variant="h2">Cat Blogs app</Typography>
+					<Switch>
+						<Route path="/users/:id">
+							<User users={users} />
+						</Route>
+						<Route path="/blogs/:id">
+							<Blog
+								handleDelete={handleDelete}
+								blogs={blogs}
+								createComment={addComment}
+								handleLike={handleLike}
+							></Blog>
+						</Route>
+						<Route path="/users">
+							<Users users={users} />
+						</Route>
+						<Route path="/blogs">
+							<Blogs
+								blogs={blogs}
+								handleLike={handleLike}
+								handleDelete={handleDelete}
+							/>
+						</Route>
+						<Route path="/login">
+							{!user ? (
+								<LoginForm
+									username={username}
+									password={password}
+									handleUserNameChange={({ target }) =>
+										setUsername(target.value)
+									}
+									handlePasswordChange={({ target }) =>
+										setPassword(target.value)
+									}
+									handleLogin={handleLogin}
+								/>
+							) : (
+								<Redirect to="/" />
+							)}
+						</Route>
+						<Route path="/">
+							{user ? <BlogForm createBlog={addBlog} /> : null}
+						</Route>
+					</Switch>
+					<Notification message={notificationMessage} />
+					<ErrorMessage message={errorMessage} />
+					{/* {user === null ? (
+							loginForm()
 						) : (
 							<div>
-								<Button color="inherit" component={Link} to="/">
-									home
-								</Button>
-								<Button color="inherit" component={Link} to="/blogs">
-									blogs
-								</Button>
-								<Button color="inherit" component={Link} to="/users">
-									users
-								</Button>
-								{user ? (
-									<div>
-										<em>{user.name} logged in</em>{' '}
-										<Button
-											size="small"
-											variant="contained"
-											color="secondary"
-											onClick={handleLogout}
-										>
-											logout
-										</Button>
-									</div>
-								) : (
-									<Button color="inherit" component={Link} to="/login">
-										login
+								<p>
+									{user.name} logged in{' '}
+									<Button
+										size="small"
+										variant="contained"
+										color="secondary"
+										onClick={handleLogout}
+									>
+										logout
 									</Button>
-								)}
-							</div>
-						)}
-					</Toolbar>
-				</AppBar>
-				<Typography variant="h2">Cat Blogs app</Typography>
-				<Switch>
-					<Route path="/users/:id">
-						<User users={users} />
-					</Route>
-					<Route path="/blogs/:id">
-						<Blog
-							handleDelete={handleDelete}
-							blogs={blogs}
-							createComment={addComment}
-							handleLike={handleLike}
-						></Blog>
-					</Route>
-					<Route path="/users">
-						<Users users={users} />
-					</Route>
-					<Route path="/blogs">
-						<Blogs
-							blogs={blogs}
-							handleLike={handleLike}
-							handleDelete={handleDelete}
-						/>
-					</Route>
-					<Route path="/login">
-						{!user ? (
-							<LoginForm
-								username={username}
-								password={password}
-								handleUserNameChange={({ target }) => setUsername(target.value)}
-								handlePasswordChange={({ target }) => setPassword(target.value)}
-								handleLogin={handleLogin}
-							/>
-						) : (
-							<Redirect to="/" />
-						)}
-					</Route>
-				</Switch>
-				<Notification message={notificationMessage} />
-				<ErrorMessage message={errorMessage} />
-				{/* {user === null ? (
-						loginForm()
-					) : (
-						<div>
-							<p>
-								{user.name} logged in{' '}
-								<Button
-									size="small"
-									variant="contained"
-									color="secondary"
-									onClick={handleLogout}
-								>
-									logout
-								</Button>
-							</p>
-							{blogForm()} */}
-				{/* </div> */}
-				{/* )} */}
-			</Container>
+								</p>
+								{blogForm()} */}
+					{/* </div> */}
+					{/* )} */}
+				</Container>
+			</Layout>
 		</Router>
 	);
 };
