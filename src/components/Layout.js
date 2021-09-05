@@ -7,7 +7,8 @@ const useStyles = makeStyles({
 		width: '100%',
 		height: '100%',
 		color: 'white',
-		display: 'flex'
+		display: 'flex',
+		alignItems: 'center',
 	},
 });
 export default function Layout({ children }) {

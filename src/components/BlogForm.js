@@ -5,7 +5,7 @@ import { Typography } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useFormik } from 'formik';
-import * as Yup from 'yup'
+import * as Yup from 'yup';
 
 const useStyles = makeStyles({
 	field: {
@@ -22,14 +22,13 @@ const BlogSchema = Yup.object().shape({
 		.min(2, 'Too short!')
 		.max(50, 'Too Long!')
 		.required('Required'),
-	url: Yup.string('Enter website').url()
+	url: Yup.string('Enter website')
+		.url()
 		.min(2, 'Too short!')
-		.required('Required')
-	
-})
+		.required('Required'),
+});
 
 const BlogForm = ({ createBlog }) => {
-
 	const formik = useFormik({
 		initialValues: {
 			title: '',
@@ -37,15 +36,16 @@ const BlogForm = ({ createBlog }) => {
 			url: '',
 		},
 		validationSchema: BlogSchema,
-			onSubmit: values => {
-				console.log(values)
-				createBlog({
-					title: formik.values.title,
-					author: formik.values.author,
-					url: formik.values.url,
-				})
-			}})
-			
+		onSubmit: (values) => {
+			console.log(values);
+			createBlog({
+				title: formik.values.title,
+				author: formik.values.author,
+				url: formik.values.url,
+			});
+		},
+	});
+
 	const classes = useStyles();
 	return (
 		<form autoComplete="off" onSubmit={formik.handleSubmit}>
@@ -63,8 +63,7 @@ const BlogForm = ({ createBlog }) => {
 					margin="normal"
 					error={formik.touched.title && Boolean(formik.errors.title)}
 					helperText={formik.touched.title && formik.errors.title}
-					
-					/>
+				/>
 			</div>
 
 			<div>
@@ -78,7 +77,7 @@ const BlogForm = ({ createBlog }) => {
 					margin="normal"
 					error={formik.touched.author && Boolean(formik.errors.author)}
 					helperText={formik.touched.author && formik.errors.author}
-					/>
+				/>
 			</div>
 			<div>
 				<TextField
@@ -90,20 +89,18 @@ const BlogForm = ({ createBlog }) => {
 					margin="normal"
 					error={formik.touched.url && Boolean(formik.errors.url)}
 					helperText={formik.touched.url && formik.errors.url}
-
 					onChange={formik.handleChange}
 					className={classes.field}
-					/>
+				/>
 			</div>
 			<div>
 				<Button
 					id="add-button"
 					variant="contained"
-					color="primary"
+					color="secondary"
 					startIcon={<SaveIcon />}
 					type="submit"
-					size="large"
-					>
+				>
 					Add
 				</Button>
 			</div>

@@ -13,6 +13,7 @@ import User from './components/User';
 import './Index.css';
 import ErrorMessage from './components/Error';
 import { Typography, Container } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 
 import {
 	BrowserRouter as Router,
@@ -22,6 +23,12 @@ import {
 } from 'react-router-dom';
 import NavBar from './components/NavBar';
 
+const useStyles = makeStyles({
+	root: {
+		textAlign: 'center',
+	},
+});
+
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
 	const [username, setUsername] = useState('');
@@ -30,6 +37,8 @@ const App = () => {
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [notificationMessage, setNotificationMessage] = useState(null);
 	const [users, setUsers] = useState([]);
+
+	const classes = useStyles();
 
 	useEffect(() => {
 		blogService.getAll().then((blogs) => setBlogs(blogs));
@@ -133,70 +142,54 @@ const App = () => {
 			<Layout>
 				<Container>
 					<NavBar user={user} handleLogout={handleLogout} />
-					<Typography variant="h2">Cat Blogs app</Typography>
-					<Switch>
-						<Route path="/users/:id">
-							<User users={users} />
-						</Route>
-						<Route path="/blogs/:id">
-							<Blog
-								handleDelete={handleDelete}
-								blogs={blogs}
-								createComment={addComment}
-								handleLike={handleLike}
-							></Blog>
-						</Route>
-						<Route path="/users">
-							<Users users={users} />
-						</Route>
-						<Route path="/blogs">
-							<Blogs
-								blogs={blogs}
-								handleLike={handleLike}
-								handleDelete={handleDelete}
-							/>
-						</Route>
-						<Route path="/login">
-							{!user ? (
-								<LoginForm
-									username={username}
-									password={password}
-									handleUserNameChange={({ target }) =>
-										setUsername(target.value)
-									}
-									handlePasswordChange={({ target }) =>
-										setPassword(target.value)
-									}
-									handleLogin={handleLogin}
+					<div className={classes.root}>
+						<Typography variant="h2">Cat Blogs app</Typography>
+						<Switch>
+							<Route path="/users/:id">
+								<User users={users} />
+							</Route>
+							<Route path="/blogs/:id">
+								<Blog
+									handleDelete={handleDelete}
+									blogs={blogs}
+									createComment={addComment}
+									handleLike={handleLike}
+								></Blog>
+							</Route>
+							<Route path="/users">
+								<Users users={users} />
+							</Route>
+							<Route path="/blogs">
+								<Blogs
+									blogs={blogs}
+									handleLike={handleLike}
+									handleDelete={handleDelete}
 								/>
-							) : (
-								<Redirect to="/" />
-							)}
-						</Route>
-						<Route path="/">
-							{user ? <BlogForm createBlog={addBlog} /> : null}
-						</Route>
-					</Switch>
-					<Notification message={notificationMessage} />
-					<ErrorMessage message={errorMessage} />
-					{/* {user === null ? (
-							loginForm()
-						) : (
-							<div>
-								<p>
-									{user.name} logged in{' '}
-									<Button
-										size="small"
-										variant="contained"
-										color="secondary"
-										onClick={handleLogout}
-									>
-										logout
-									</Button>
-								</p>
-								{blogForm()} */}
-					{/* </div> */}
-					{/* )} */}
+							</Route>
+							<Route path="/login">
+								{!user ? (
+									<LoginForm
+										username={username}
+										password={password}
+										handleUserNameChange={({ target }) =>
+											setUsername(target.value)
+										}
+										handlePasswordChange={({ target }) =>
+											setPassword(target.value)
+										}
+										handleLogin={handleLogin}
+									/>
+								) : (
+									<Redirect to="/" />
+								)}
+							</Route>
+							<Route path="/">
+								{user ? <BlogForm createBlog={addBlog} /> : null}
+							</Route>
+						</Switch>
+						<Notification message={notificationMessage} />
+						<ErrorMessage message={errorMessage} />
+					</div>
 				</Container>
 			</Layout>
 		</Router>

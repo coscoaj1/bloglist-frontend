@@ -9,7 +9,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import TextField from '@material-ui/core/TextField';
-import { IconButton, CardActions } from '@material-ui/core';
+import { IconButton, CardActions, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -23,6 +23,10 @@ const useStyles = makeStyles(() => ({
 	},
 	field: {
 		marginTop: 20,
+	},
+	grid: {
+		width: '100%',
+		justifyContent: 'center',
 	},
 }));
 
@@ -56,49 +60,54 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
 	}
 
 	return (
-		<>
-			<Card elevation={12} className={classes.root}>
-				<CardContent>
-					<Typography className={classes.title}>{blog.title}</Typography>{' '}
-					<Typography>{blog.author}</Typography>
-					<Typography>{blog.url}</Typography>
-					<Typography>{blog.likes} likes</Typography>
-					<CardActions>
-						<IconButton
-							id="likeButton"
-							size="small"
-							color="primary"
-							onClick={() => handleLike(blog)}
-						>
-							<ThumbUpIcon />
-						</IconButton>
-						<IconButton onClick={() => handleDelete(blog)}>
-							<DeleteIcon color="primary" />
-						</IconButton>
-						<IconButton onClick={handleExpandedClick}>
-							<ModeCommentIcon color="primary" />
-						</IconButton>
-					</CardActions>
-				</CardContent>
-			</Card>
-			{expanded ? (
-				<form noValidate autoComplete="off" onSubmit={addComment}>
-					<TextField
-						className={classes.field}
-						onChange={handleChange}
-						value={newComment}
-						color="secondary"
-						variant="outlined"
-						label="enter comment"
-						fullWidth
-					/>
-				</form>
-			) : null}
-			<Typography variant="h4">comments</Typography>
-			{blog.comments.map((comment) => {
-				return <div key={comment.comments}>{comment.comments}</div>;
-			})}
-		</>
+		<div>
+			<div>
+				<Grid container direction="row" justifyContent="center">
+					<Card elevation={12} className={classes.root}>
+						<CardContent>
+							<Typography className={classes.title}>{blog.title}</Typography>{' '}
+							<Typography>{blog.author}</Typography>
+							<Typography>{blog.url}</Typography>
+							<Typography>{blog.likes} likes</Typography>
+							<CardActions>
+								<IconButton
+									id="likeButton"
+									size="small"
+									onClick={() => handleLike(blog)}
+								>
+									<ThumbUpIcon />
+								</IconButton>
+								<IconButton onClick={() => handleDelete(blog)}>
+									<DeleteIcon />
+								</IconButton>
+								<IconButton onClick={handleExpandedClick}>
+									<ModeCommentIcon />
+								</IconButton>
+							</CardActions>
+						</CardContent>
+					</Card>
+				</Grid>
+				{expanded ? (
+					<form noValidate autoComplete="off" onSubmit={addComment}>
+						<TextField
+							className={classes.field}
+							onChange={handleChange}
+							value={newComment}
+							color="secondary"
+							variant="outlined"
+							label="enter comment"
+							fullWidth
+						/>
+					</form>
+				) : null}
+			</div>
+			<div>
+				<Typography variant="h4">comments</Typography>
+				{blog.comments.map((comment) => {
+					return <div key={comment.comments}>{comment.comments}</div>;
+				})}
+			</div>
+		</div>
 	);
 };
 
