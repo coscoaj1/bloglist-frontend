@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 const useStyles = makeStyles({
 	field: {
 		marginBottom: 10,
+		borderColor: 'black',
 	},
 });
 
@@ -54,7 +55,7 @@ const BlogForm = ({ createBlog }) => {
 			<div>
 				<TextField
 					id="title"
-					variant="outlined"
+					variant="standard"
 					label="title"
 					fullWidth={true}
 					value={formik.values.title}

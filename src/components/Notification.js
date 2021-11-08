@@ -1,5 +1,5 @@
 import '../Index.css';
-import Alert from '@material-ui/lab/Alert';
+import Alert from '@mui/material/Alert';
 
 const Notification = ({ message }) => {
 	if (message === null) {

@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
 		minWidth: 275,
 		maxWidth: 345,
 		backgroundColor: '#424242',
-		color: 'white',
+		color: 'black',
 	},
 	title: {
 		fontSize: 22,

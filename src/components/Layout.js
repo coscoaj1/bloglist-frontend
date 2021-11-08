@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
 	root: {
-		background: 'black',
+		background: 'white',
 		width: '100%',
 		height: '100%',
-		color: 'white',
+		color: 'black',
 		display: 'flex',
 		alignItems: 'center',
 	},
