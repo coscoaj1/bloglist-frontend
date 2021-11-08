@@ -8,10 +8,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-
+import { Grid } from '@material-ui/core';
 const useStyles = makeStyles({
 	table: {
-		maxWidth: 500,
+		maxWidth: 700,
 		fontSize: 22,
 	},
 	link: {
@@ -23,39 +23,40 @@ const useStyles = makeStyles({
 const Blogs = ({ blogs }) => {
 	const classes = useStyles();
 	return (
-		<TableContainer component={Paper}>
-			<Table>
-				<TableHead>
-					<TableRow>
-						<TableCell>
-							<Typography variant="h5">blogs</Typography>
-						</TableCell>
-						<TableCell align="left">
-							<Typography variant="h5"> Author</Typography>
-						</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{blogs
-						.sort((a, b) => b.likes - a.likes)
-						.map((blog) => (
-							<TableRow button="true" key={blog.id}>
-								<TableCell>
-									<Typography variant="h6">
-										<Link className={classes.link} to={`blogs/${blog.id}`}>
-											{blog.title}
-										</Link>
-									</Typography>
-								</TableCell>
-
-								<TableCell>
-									<Typography variant="subtitle1">{blog.author}</Typography>
-								</TableCell>
-							</TableRow>
-						))}
-				</TableBody>
-			</Table>
-		</TableContainer>
+		<Grid container direction="row" justifyContent="center">
+			<TableContainer className={classes.table} component={Paper}>
+				<Table>
+					<TableHead>
+						<TableRow>
+							<TableCell>
+								<Typography variant="h5">Blogs</Typography>
+							</TableCell>
+							<TableCell align="left">
+								<Typography variant="h5"> Author</Typography>
+							</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{blogs
+							.sort((a, b) => b.likes - a.likes)
+							.map((blog) => (
+								<TableRow button="true" key={blog.id}>
+									<TableCell>
+										<Typography variant="h6">
+											<Link className={classes.link} to={`blogs/${blog.id}`}>
+												{blog.title}
+											</Link>
+										</Typography>
+									</TableCell>
+									<TableCell>
+										<Typography variant="subtitle1">{blog.author}</Typography>
+									</TableCell>
+								</TableRow>
+							))}
+					</TableBody>
+				</Table>
+			</TableContainer>
+		</Grid>
 	);
 };
 

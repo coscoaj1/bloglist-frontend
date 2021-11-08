@@ -1,10 +1,11 @@
 import '../Index.css';
+import Alert from '@material-ui/lab/Alert';
 
 const Notification = ({ message }) => {
 	if (message === null) {
 		return null;
 	}
-	return <div className="error">{message}</div>;
+	return <Alert>{message}</Alert>;
 };
 
 export default Notification;

@@ -70,6 +70,8 @@ const App = () => {
 			setUser(user);
 			setUsername('');
 			setPassword('');
+			setNotificationMessage(`${user.username} logged in.`);
+			timeout();
 		} catch (exception) {
 			setErrorMessage('Invalid username or password.');
 			setTimeout(() => {
@@ -143,6 +145,8 @@ const App = () => {
 				<Container>
 					<NavBar user={user} handleLogout={handleLogout} />
 					<div className={classes.root}>
+						<Notification message={notificationMessage} />
+
 						<Typography variant="h2">Cat Blogs app</Typography>
 						<Switch>
 							<Route path="/users/:id">
@@ -187,7 +191,6 @@ const App = () => {
 								{user ? <BlogForm createBlog={addBlog} /> : null}
 							</Route>
 						</Switch>
-						<Notification message={notificationMessage} />
 						<ErrorMessage message={errorMessage} />
 					</div>
 				</Container>
