@@ -14,6 +14,7 @@ import './Index.css';
 import ErrorMessage from './components/Error';
 import { Typography, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
+import Hero from './components/Hero';
 
 import {
 	BrowserRouter as Router,
@@ -147,7 +148,8 @@ const App = () => {
 					<div className={classes.root}>
 						<Notification message={notificationMessage} />
 
-						<Typography variant="h2">Cat Blogs app</Typography>
+						<Typography variant="h2">BlogShare</Typography>
+						<Hero />
 						<Switch>
 							<Route path="/users/:id">
 								<User users={users} />
