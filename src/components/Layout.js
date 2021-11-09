@@ -1,21 +1,19 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core';
+import React from "react";
 
-const useStyles = makeStyles({
-	root: {
-		background: 'black',
-		width: '100%',
-		height: '100%',
-		color: 'white',
-		display: 'flex',
-		alignItems: 'center',
-	},
-});
+// const useStyles = makeStyles({
+// 	root: {
+// 		background: 'black',
+// 		width: '100%',
+// 		height: '100%',
+// 		color: 'white',
+// 		display: 'flex',
+// 		alignItems: 'center',
+// 	},
+// });
 export default function Layout({ children }) {
-	const classes = useStyles();
-	return (
-		<div>
-			<div className={classes.root}>{children}</div>
-		</div>
-	);
+  return (
+    <div>
+      <div>{children}</div>
+    </div>
+  );
 }
