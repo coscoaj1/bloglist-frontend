@@ -16,7 +16,7 @@ function Hero(props) {
 				backgroundColor: 'grey.800',
 				color: '#fff',
 				mb: 4,
-				height: '800px',
+				height: '600px',
 				backgroundSize: 'cover',
 				backgroundRepeat: 'no-repeat',
 				backgroundPosition: 'center',
