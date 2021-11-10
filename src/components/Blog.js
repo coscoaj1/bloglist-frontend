@@ -41,7 +41,6 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
     setNewComment(event.target.value);
   };
 
-  //   const classes = useStyles();
   const id = useParams().id;
   const blog = blogs.find((b) => b.id === String(id));
 
@@ -61,35 +60,32 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
   return (
     <div>
       <div>
-        <Grid container direction="row" justifyContent="center">
-          <Card elevation={12}>
-            <CardContent>
-              <Typography>{blog.title}</Typography>{" "}
-              <Typography>{blog.author}</Typography>
-              <Typography>{blog.url}</Typography>
-              <Typography>{blog.likes} likes</Typography>
-              <CardActions>
-                <IconButton
-                  id="likeButton"
-                  size="small"
-                  onClick={() => handleLike(blog)}
-                >
-                  <ThumbUpIcon />
-                </IconButton>
-                <IconButton onClick={() => handleDelete(blog)}>
-                  <DeleteIcon />
-                </IconButton>
-                <IconButton onClick={handleExpandedClick}>
-                  <ModeCommentIcon />
-                </IconButton>
-              </CardActions>
-            </CardContent>
-          </Card>
-        </Grid>
+        <Card sx={{ maxWidth: 345 }} elevation={12}>
+          <CardContent>
+            <Typography>{blog.title}</Typography>{" "}
+            <Typography>{blog.author}</Typography>
+            <Typography>{blog.url}</Typography>
+            <Typography>{blog.likes} likes</Typography>
+            <CardActions>
+              <IconButton
+                id="likeButton"
+                size="small"
+                onClick={() => handleLike(blog)}
+              >
+                <ThumbUpIcon />
+              </IconButton>
+              <IconButton onClick={() => handleDelete(blog)}>
+                <DeleteIcon />
+              </IconButton>
+              <IconButton onClick={handleExpandedClick}>
+                <ModeCommentIcon />
+              </IconButton>
+            </CardActions>
+          </CardContent>
+        </Card>
         {expanded ? (
           <form noValidate autoComplete="off" onSubmit={addComment}>
             <TextField
-              className={classes.field}
               onChange={handleChange}
               value={newComment}
               color="secondary"

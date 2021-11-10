@@ -11,7 +11,6 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import ok from "../ok.png";
 import { useTheme } from "@mui/material/styles";
-// MuiAppBar-root
 
 // const useStyles = makeStyles({
 // 	root: {
@@ -58,7 +57,7 @@ export default function NavBar({ user, handleLogout }) {
                 fontSize="large"
                 sx={{ color: "gray", paddingRight: "12px" }}
               />
-              <Typography variant="h4">CAT-BLOGS</Typography>
+              <Typography variant="h4">Catlify</Typography>
             </Button>
 
             <Button color="inherit" component={Link} to="/blogs">
@@ -90,18 +89,11 @@ export default function NavBar({ user, handleLogout }) {
             </Button>
           )}
         </Toolbar>
+        {isMatch ? (
+          <DrawerComponent handleLogout={handleLogout} user={user} />
+        ) : null}
       </AppBar>
       <Toolbar />
     </>
   );
-}
-
-{
-  /* {isMatch ? (
-  <DrawerComponent handleLogout={handleLogout} user={user} />
-) : ( */
-}
-
-{
-  /* )} */
 }

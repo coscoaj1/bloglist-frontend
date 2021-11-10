@@ -2,10 +2,10 @@ import { createTheme } from "@mui/material/styles";
 import { purple, teal } from "@mui/material/colors";
 
 const theme = createTheme({
-  palette: {
-    primary: purple,
-    secondary: teal,
-  },
+  // palette: {
+  //   primary: purple,
+  //   secondary: teal,
+  // },
   typography: {
     fontFamily: "Quicksand",
     fontWeightLight: 400,

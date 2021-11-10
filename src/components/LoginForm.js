@@ -1,4 +1,6 @@
 import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import * as React from "react";
 
 const LoginForm = ({
   username,
@@ -9,17 +11,19 @@ const LoginForm = ({
 }) => {
   return (
     <form onSubmit={handleLogin}>
-      <div>
+      <div style={{ paddingTop: "12px" }}>
         username:
         <TextField
+          sx={{ minWidth: 400 }}
           id="username"
           value={username}
           onChange={handleUserNameChange}
         />
       </div>
       <div>
-        password
+        password:
         <TextField
+          sx={{ minWidth: 400 }}
           id="password"
           value={password}
           onChange={handlePasswordChange}
