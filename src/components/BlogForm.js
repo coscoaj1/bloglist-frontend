@@ -85,6 +85,7 @@ const BlogForm = ({ createBlog }) => {
       </div>
       <div>
         <Button
+          sx={{ color: "white" }}
           id="add-button"
           variant="contained"
           color="secondary"

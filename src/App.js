@@ -142,7 +142,6 @@ const App = () => {
         <Container sx={{ textAlign: "center" }}>
           <NavBar user={user} handleLogout={handleLogout} />
           <div>
-            <Hero />
             <Switch>
               <Route path="/users/:id">
                 <User users={users} />
@@ -183,6 +182,7 @@ const App = () => {
                 )}
               </Route>
               <Route path="/">
+                <Hero />
                 {user ? <BlogForm createBlog={addBlog} /> : null}
               </Route>
             </Switch>

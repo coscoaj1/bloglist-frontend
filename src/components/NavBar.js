@@ -75,8 +75,10 @@ export default function NavBar({ user, handleLogout }) {
             </Button>
           </div>
           {user ? (
-            <Toolbar sx={{ display: "flex" }}>
-              <Button size="small" onClick={handleLogout}>
+            <Toolbar
+              sx={{ display: "flex", justifyContent: "center", gap: "1rem" }}
+            >
+              <Button color="inherit" size="small" onClick={handleLogout}>
                 logout
               </Button>
               <Typography>{user.name}</Typography>
