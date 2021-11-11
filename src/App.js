@@ -10,6 +10,7 @@ import Blog from "./components/Blog";
 import Notification from "./components/Notification";
 import Users from "./components/Users";
 import User from "./components/User";
+import Footer from "./components/Footer";
 import "./Index.css";
 import ErrorMessage from "./components/Error";
 import Typography from "@mui/material/Typography";
@@ -188,6 +189,7 @@ const App = () => {
             </Switch>
             <Notification message={notificationMessage} />
             <ErrorMessage message={errorMessage} />
+            <Footer />
           </div>
         </Container>
       </Layout>
