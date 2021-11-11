@@ -1,13 +1,6 @@
 import { useParams } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-	Card,
-	CardContent,
-	CardMedia,
-	Typography,
-	CardActions,
-	CardActionArea,
-} from '@material-ui/core';
+import { Card, CardMedia, Typography, CardActionArea } from '@material-ui/core';
 import Ma from '../Ma.jpg';
 import Ok from '../ok.png';
 import Whitey from '../Whitey.jpg';
