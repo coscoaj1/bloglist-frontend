@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import {
-	Drawer,
-	List,
-	ListItem,
-	ListItemText,
-	ListItemIcon,
-	IconButton,
-} from '@material-ui/core';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleIcon from '@mui/icons-material/People';

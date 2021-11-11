@@ -5,7 +5,7 @@ import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import PestControlRodentIcon from '@mui/icons-material/PestControlRodent';
 import DrawerComponent from './DrawerComponent';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
