@@ -7,6 +7,9 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import * as React from "react";
 
@@ -35,30 +38,65 @@ const LoginForm = ({
   handlePasswordChange,
 }) => {
   return (
-    <Container>
-      <form onSubmit={handleLogin}>
-        <div style={{ paddingTop: "12px" }}>
-          username:
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <Box component="form" onSubmit={handleLogin} sx={{ mt: 1 }}>
           <TextField
-            sx={{ minWidth: 400 }}
+            sx={{ minWidth: 400, mb: 3 }}
             id="username"
+            label="Username *"
             value={username}
             onChange={handleUserNameChange}
           />
-        </div>
-        <div>
-          password:
           <TextField
             sx={{ minWidth: 400 }}
             id="password"
+            label="Password *"
+            type="password"
             value={password}
             onChange={handlePasswordChange}
           />
-        </div>
-        <button id="login-button" type="submit">
-          login
-        </button>
-      </form>
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            id="login-button"
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            login
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2">
+                Forgot password?
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="#" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
       <Copyright sx={{ mt: 8, mb: 4 }} />
     </Container>
   );
