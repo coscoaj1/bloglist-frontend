@@ -45,13 +45,12 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
   const blog = blogs.find((b) => b.id === String(id));
 
   const addComment = (event) => {
-    console.log(blog);
     event.preventDefault();
-    console.log(newComment);
     createComment({
       comment: newComment,
       id: blog.id,
     });
+    setNewComment("");
   };
   if (!blog) {
     return null;
@@ -62,11 +61,22 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
       <div>
         <Card sx={{ maxWidth: 345 }} elevation={12}>
           <CardContent>
-            <Typography>{blog.title}</Typography>{" "}
+            <Typography fontWeight="medium" variant="h5">
+              {blog.title}
+            </Typography>{" "}
             <Typography>{blog.author}</Typography>
-            <Typography>{blog.url}</Typography>
-            <Typography>{blog.likes} likes</Typography>
-            <CardActions>
+            <a href="">
+              <Typography>{blog.url}</Typography>
+            </a>
+            <Typography fontWeight="lighter">{blog.likes} likes</Typography>
+            <CardActions
+              sx={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               <IconButton
                 id="likeButton"
                 size="small"
@@ -92,6 +102,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
               variant="outlined"
               label="enter comment"
               fullWidth
+              sx={{ marginTop: "2rem" }}
             />
           </form>
         ) : null}
