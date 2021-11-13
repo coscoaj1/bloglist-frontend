@@ -3,8 +3,12 @@ import { deepPurple, amber } from '@mui/material/colors';
 
 let theme = createTheme({
 	palette: {
-		primary: deepPurple,
-		secondary: amber,
+		primary: {
+			main: deepPurple[700],
+		},
+		secondary: {
+			main: amber[400],
+		},
 	},
 	typography: {
 		fontFamily: 'Quicksand',

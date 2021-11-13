@@ -4,18 +4,16 @@ import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import DrawerComponent from './DrawerComponent';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import ok from '../ok.png';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import { styled } from '@mui/system';
 
 export default function NavBar({ user, handleLogout }) {
-	// const theme = useTheme();
-	// const isMatch = useMediaQuery(theme.breakpoints.down("xs"));
-
+	const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 	return (
 		<>
 			<AppBar position="fixed" sx={{ width: '100vw', margin: 0 }}>
@@ -79,7 +77,7 @@ export default function NavBar({ user, handleLogout }) {
 					)}
 				</Toolbar>
 			</AppBar>
-			<Toolbar />
+			<Offset />
 		</>
 	);
 }

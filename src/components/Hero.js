@@ -1,74 +1,74 @@
-import React from "react";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
-import Box from "@mui/material/Box";
-import Image from "../assets/retrosupply-jLwVAUtLOAQ-unsplash.jpg";
-
-function Hero(props) {
-  const { post } = props;
-
-  return (
-    <Paper
-      sx={{
-        position: "relative",
-        backgroundColor: "grey.800",
-        color: "#fff",
-        mb: 4,
-        height: "400px",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backgroundImage: `url(${Image})`,
-      }}
-    >
-      {/* Increase the priority of the hero background image */}
-      {
-        <img
-          style={{ display: "none" }}
-          // src={post.image}
-          // alt={post.imageText}
-        />
-      }
-      <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
-          backgroundColor: "rgba(0,0,0,.3)",
-        }}
-      />
-      <Grid container>
-        <Grid item md={6}>
-          <Box
-            sx={{
-              position: "relative",
-              p: { xs: 3, md: 6 },
-              pr: { md: 0 },
-            }}
-          >
-            <Typography
-              component="h1"
-              variant="h3"
-              color="inherit"
-              gutterBottom
-            >
-              {/* {post.title} */}
-            </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
-              {/* {post.description} */}
-            </Typography>
-            <Link variant="subtitle1" href="#">
-              {/* {post.linkText} */}
-            </Link>
-          </Box>
-        </Grid>
-      </Grid>
-    </Paper>
-  );
+import React from 'react';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
+import Image from '../assets/retrosupply-jLwVAUtLOAQ-unsplash.jpg';
+import ArrowDownward from '@mui/icons-material/ArrowDownward';
+function Hero({ title, subtitle }) {
+	return (
+		<Grid
+			component="section"
+			container
+			sx={{
+				position: `relative`,
+				height: '100vh',
+				width: `100vw`,
+				overflow: `hidden`,
+				zIndex: -100,
+				mb: 15,
+				backgroundSize: 'cover',
+				backgroundRepeat: 'no-repeat',
+				backgroundPosition: 'center',
+				backgroundImage: `url(${Image})`,
+			}}
+		>
+			<Grid
+				container
+				sx={{
+					position: 'absolute',
+					inset: 0,
+					zIndex: 10,
+					backgroundColor: 'rgba(0,0,0, .6)',
+				}}
+			/>
+			<Grid
+				container
+				item
+				flexDirection="column"
+				justifyContent="center"
+				alignItems="center"
+				sx={{ zIndex: 20 }}
+			>
+				<Typography
+					variant="h1"
+					align="center"
+					gutterBottom
+					sx={{
+						color: 'secondary.main',
+						fontWeight: 400,
+					}}
+				>
+					{title}
+				</Typography>
+				<Typography
+					component="p"
+					variant="h3"
+					align="center"
+					color="common.white"
+					sx={{
+						mb: 10,
+					}}
+				>
+					{subtitle}
+				</Typography>
+				<Typography component="p" variant="h6" color="secondary" gutterBottom>
+					Scroll
+				</Typography>
+				<ArrowDownward fontSize="large" color="secondary" />
+			</Grid>
+		</Grid>
+	);
 }
 
 export default Hero;

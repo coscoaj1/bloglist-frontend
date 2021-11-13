@@ -23,11 +23,14 @@ export default function Footer() {
 		<Box
 			component="footer"
 			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+				alignItems: 'center',
 				bgcolor: 'primary.main',
 				position: 'fixed',
 				bottom: 0,
 				left: 0,
-				mt: 4,
 				width: '100%',
 				py: 2,
 			}}
