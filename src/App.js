@@ -178,12 +178,12 @@ const App = () => {
             )}
           </Route>
           <Route path="/">
-            <Hero title="BlogReviews" subtitle="Social Blog Sharing App" />
+            <Hero title="BlogReviews" subtitle="A Blog Sharing App" />
             <AboutSection />
+            <Notification message={notificationMessage} />
             {user ? <BlogForm createBlog={addBlog} /> : null}
           </Route>
         </Switch>
-        <Notification message={notificationMessage} />
         <ErrorMessage message={errorMessage} />
       </div>
       <Footer />

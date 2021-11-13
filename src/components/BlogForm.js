@@ -3,6 +3,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import "../Index.css";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
+import Article from "@mui/icons-material/Article";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useFormik } from "formik";
@@ -48,14 +49,28 @@ const BlogForm = ({ createBlog }) => {
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        <Box component="form" autoComplete="off" onSubmit={formik.handleSubmit}>
-          <Typography component="h1" variant="h5">
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Article />
+        </Avatar>
+        <Box
+          component="form"
+          autoComplete="off"
+          onSubmit={formik.handleSubmit}
+          sx={{
+            mb: 16,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography textAlign="center" component="h1" variant="h5">
             add new blog
           </Typography>
 
@@ -95,6 +110,7 @@ const BlogForm = ({ createBlog }) => {
           />
           <Button
             sx={{ color: "white" }}
+            textAlign="center"
             id="add-button"
             variant="contained"
             color="secondary"

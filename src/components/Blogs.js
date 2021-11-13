@@ -3,19 +3,11 @@ import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-
+import Container from "@mui/material/Container";
 import TableCell from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
-// 	table: {
-// 		maxWidth: 500,
-// 		fontSize: 22,
-// 	},
-// 	link: {
-// 		textDecoration: 'none',
-// 		color: '#FFF',
-// 	},
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -25,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Blogs = ({ blogs, handleDelete, handleLike }) => {
   return (
-    <>
+    <Container>
       <Typography variant="h4">Today's Blogs</Typography>
       <List>
         {blogs
@@ -39,7 +31,7 @@ const Blogs = ({ blogs, handleDelete, handleLike }) => {
                     className="link"
                     to={`blogs/${blog.id}`}
                   >
-                    <Typography sx={{ textDecoration: "none" }} variant="h4">
+                    <Typography sx={{ textDecoration: "none" }} variant="h5">
                       {blog.title}
                     </Typography>
                   </Link>
@@ -53,7 +45,7 @@ const Blogs = ({ blogs, handleDelete, handleLike }) => {
             </ListItem>
           ))}
       </List>
-    </>
+    </Container>
   );
 };
 

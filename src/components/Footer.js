@@ -32,19 +32,19 @@ export default function Footer() {
         bottom: 0,
         left: 0,
         width: "100%",
-        py: 2,
+        py: 1,
         zIndex: 10,
       }}
     >
-      <Stack direction="row" justifyContent="center" spacing={4} sx={{ mb: 2 }}>
+      <Stack direction="row" justifyContent="center" spacing={4}>
         <Link component="button" sx={{ color: `common.white` }}>
-          <Facebook fontSize="large" />
+          <Facebook fontSize="medium" />
         </Link>
         <Link component="button" sx={{ color: `common.white` }}>
-          <Instagram fontSize="large" />
+          <Instagram fontSize="medium" />
         </Link>
         <Link component="button" sx={{ color: `common.white` }}>
-          <Twitter fontSize="large" />
+          <Twitter fontSize="medium" />
         </Link>
       </Stack>
       <Copyright />
