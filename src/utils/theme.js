@@ -1,10 +1,11 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { deepPurple, amber } from '@mui/material/colors';
 
-const theme = createTheme({
-	// palette: {
-	//   primary: purple,
-	//   secondary: teal,
-	// },
+let theme = createTheme({
+	palette: {
+		primary: deepPurple,
+		secondary: amber,
+	},
 	typography: {
 		fontFamily: 'Quicksand',
 		fontWeightLight: 400,
@@ -14,6 +15,5 @@ const theme = createTheme({
 	},
 });
 
+theme = responsiveFontSizes(theme);
 export default theme;
-
-//["002500","355070","dadff7","870058","a4303f"]
