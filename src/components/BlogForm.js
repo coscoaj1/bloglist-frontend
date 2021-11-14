@@ -14,7 +14,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 const BlogSchema = Yup.object().shape({
 	title: Yup.string('Enter title')
 		.min(2, 'Too short!')
-		.max(50, 'Too Long!')
+		.max(75, 'Too Long!')
 		.required('Required'),
 	author: Yup.string('Enter author')
 		.min(2, 'Too short!')

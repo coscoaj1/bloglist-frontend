@@ -10,6 +10,7 @@ import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import TextField from '@mui/material/TextField';
 import { IconButton, CardActions, Grid } from '@mui/material/';
 import { useHistory } from 'react-router-dom';
+import Container from '@mui/material/Container';
 
 const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
 	const [expanded, setExpanded] = useState(false);
@@ -41,18 +42,20 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
 	}
 
 	return (
-		<div>
+		<Container>
 			<div>
-				<Card sx={{ maxWidth: 345 }} elevation={12}>
+				<Card sx={{ maxWidth: 345, mt: 4, mb: 4, padding: 1 }} elevation={12}>
 					<CardContent>
-						<Typography fontWeight="medium" variant="h5">
+						<Typography fontWeight="medium" variant="h5" gutterBottom>
 							{blog.title}
 						</Typography>{' '}
-						<Typography>{blog.author}</Typography>
+						<Typography color="text.secondary" gutterBottom>
+							{blog.author}
+						</Typography>
 						<a href="">
-							<Typography>{blog.url}</Typography>
+							<Typography gutterBottom>{blog.url}</Typography>
 						</a>
-						<Typography fontWeight="lighter">{blog.likes} likes</Typography>
+						<Typography color="text.secondary">{blog.likes} likes</Typography>
 						<CardActions
 							sx={{
 								width: '100%',
@@ -98,10 +101,10 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
 			<div>
 				<Typography variant="h4">comments</Typography>
 				{blog.comments.map((comment) => {
-					return <div key={comment.comments}>{comment.comments}</div>;
+					return <div key={comment.comments}>"{comment.comments}"</div>;
 				})}
 			</div>
-		</div>
+		</Container>
 	);
 };
 
