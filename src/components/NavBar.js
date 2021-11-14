@@ -7,8 +7,8 @@ import DrawerComponent from "./DrawerComponent";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
+import PersonIcon from "@mui/icons-material/Person";
 import ok from "../ok.png";
-import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/system";
 
@@ -65,7 +65,9 @@ export default function NavBar({ user, handleLogout }) {
                 logout
               </Button>
               <Typography sx={{ paddingBottom: "3px" }}>{user.name}</Typography>
-              <Avatar alt="OK" src={ok} />
+              <Avatar alt="avatar">
+                <PersonIcon />
+              </Avatar>
             </Toolbar>
           ) : (
             <Button

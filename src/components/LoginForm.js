@@ -56,6 +56,9 @@ const LoginForm = ({
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
+          <Typography variant="body2">
+            Guest credentials - username: 'Guest' password: 'Password'
+          </Typography>
           <Button
             id="login-button"
             type="submit"
