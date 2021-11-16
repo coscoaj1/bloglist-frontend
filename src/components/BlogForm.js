@@ -70,12 +70,7 @@ const BlogForm = ({ createBlog }) => {
             justifyContent: "center",
           }}
         >
-          <Typography
-            textAlign="center"
-            component="h1"
-            variant="h5"
-            fontWeight="medium"
-          >
+          <Typography component="h1" variant="h5" fontWeight="medium">
             Add new blog
           </Typography>
 
@@ -115,7 +110,6 @@ const BlogForm = ({ createBlog }) => {
           />
           <Button
             sx={{ color: "white" }}
-            textAlign="center"
             id="add-button"
             variant="contained"
             color="secondary"
@@ -131,11 +125,3 @@ const BlogForm = ({ createBlog }) => {
 };
 
 export default BlogForm;
-
-// const addBlog = (event) => {
-// 	event.preventDefault();
-// 	createBlog({
-// 		title: newTitle,
-// 		author: newAuthor,
-// 		url: newUrl,
-// 	});
