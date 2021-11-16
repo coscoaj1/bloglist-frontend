@@ -83,7 +83,6 @@ export default function NavBar({ user, handleLogout }) {
           )}
         </Toolbar>
       </AppBar>
-      <Offset />
     </>
   );
 }
