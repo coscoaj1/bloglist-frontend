@@ -11,6 +11,7 @@ import TextField from "@mui/material/TextField";
 import { IconButton, CardActions, Grid } from "@mui/material/";
 import { useHistory } from "react-router-dom";
 import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 
 const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
   const [expanded, setExpanded] = useState(false);
@@ -43,7 +44,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
 
   return (
     <Container>
-      <div>
+      <Box>
         <Card sx={{ maxWidth: 345 }} elevation={12}>
           <CardContent>
             <Typography fontWeight="medium" variant="h5">
@@ -95,7 +96,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             />
           </form>
         ) : null}
-      </div>
+      </Box>
       <div>
         <Typography variant="h4">comments</Typography>
         {blog.comments.map((comment) => {
