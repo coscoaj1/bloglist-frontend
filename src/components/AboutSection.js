@@ -1,9 +1,11 @@
 import { Container, Grid } from "@mui/material";
 import { ReactComponent as MySvg } from "../assets/undraw_blog_post_re_fy5x.svg";
 import Typography from "@mui/material/Typography";
-const AboutSection = () => {
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+const AboutSection = ({ user }) => {
   return (
-    <Container id="div" component="section" maxWidth="md" sx={{ mb: 15 }}>
+    <Container component="section" maxWidth="md" sx={{ mb: 15 }}>
       <Grid container spacing={3}>
         <Grid
           item
@@ -35,9 +37,30 @@ const AboutSection = () => {
           >
             Welcome to BlogReviews!
           </Typography>
-          <Typography textAlign="center">
-            {`Login to share your favorite blog posts. You may also like and comment on other posts.`}
+          <Typography variant="h5" textAlign="center">
+            {user
+              ? `Share your favorite blogs below. Also like and comment on other blogs.`
+              : `Login to share your favorite blog posts. You may also like and comment on other posts.`}
           </Typography>
+          {user ? (
+            <Button
+              sx={{ mt: 2 }}
+              component={Link}
+              variant="contained"
+              to="/blogs"
+            >
+              Blogs
+            </Button>
+          ) : (
+            <Button
+              component={Link}
+              to="/login"
+              sx={{ mt: 2 }}
+              variant="contained"
+            >
+              Login
+            </Button>
+          )}
         </Grid>
       </Grid>
     </Container>

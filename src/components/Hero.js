@@ -13,7 +13,6 @@ function Hero({ title, subtitle }) {
         height: "100vh",
         width: "100vw",
         zIndex: -100,
-        mb: 15,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

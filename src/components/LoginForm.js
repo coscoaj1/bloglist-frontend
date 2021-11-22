@@ -20,7 +20,7 @@ const LoginForm = ({
   handlePasswordChange,
 }) => {
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" sx={{ height: "75vh" }}>
       <CssBaseline />
       <Box
         sx={{

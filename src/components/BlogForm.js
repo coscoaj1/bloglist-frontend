@@ -55,7 +55,7 @@ const BlogForm = ({ createBlog }) => {
           justifyContent: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+        <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
           <Article />
         </Avatar>
         <Box
@@ -112,7 +112,6 @@ const BlogForm = ({ createBlog }) => {
             sx={{ color: "white" }}
             id="add-button"
             variant="contained"
-            color="secondary"
             startIcon={<SaveIcon />}
             type="submit"
           >

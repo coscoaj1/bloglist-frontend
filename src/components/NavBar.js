@@ -15,71 +15,68 @@ import { styled } from "@mui/system";
 export default function NavBar({ user, handleLogout }) {
   const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
   return (
-    <>
-      <AppBar position="fixed" sx={{ width: "100vw", margin: 0 }}>
-        <Toolbar
-          component="nav"
+    <AppBar position="static" sx={{ width: "100vw", margin: 0 }}>
+      <Toolbar
+        component="nav"
+        sx={{
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Box
           sx={{
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: { xs: `none`, md: `flex`, justifyContent: "center" },
           }}
         >
-          <Box
+          <Button sx={{ mr: 2 }} size="large" component={Link} to="/">
+            <LibraryBooks
+              sx={{ color: "white", width: "40px", height: "40px" }}
+            />
+          </Button>
+
+          <Button color="inherit" component={Link} to="/blogs">
+            blogs
+          </Button>
+          <Button
+            color="inherit"
+            component="div"
+            sx={{ flexGrow: 1 }}
+            component={Link}
+            to="/users"
+          >
+            users
+          </Button>
+        </Box>
+        <DrawerComponent handleLogout={handleLogout} user={user} />
+        {user ? (
+          <Toolbar
             sx={{
-              display: { xs: `none`, md: `flex`, justifyContent: "center" },
+              display: { xs: `none`, md: `flex` },
+              justifyContent: "center",
+              gap: "1rem",
             }}
           >
-            <Button sx={{ mr: 2 }} size="large" component={Link} to="/">
-              <LibraryBooks
-                sx={{ color: "white", width: "40px", height: "40px" }}
-              />
+            <Button color="inherit" size="small" onClick={handleLogout}>
+              logout
             </Button>
-
-            <Button color="inherit" component={Link} to="/blogs">
-              blogs
-            </Button>
-            <Button
-              color="inherit"
-              component="div"
-              sx={{ flexGrow: 1 }}
-              component={Link}
-              to="/users"
-            >
-              users
-            </Button>
-          </Box>
-          <DrawerComponent handleLogout={handleLogout} user={user} />
-          {user ? (
-            <Toolbar
-              sx={{
-                display: { xs: `none`, md: `flex` },
-                justifyContent: "center",
-                gap: "1rem",
-              }}
-            >
-              <Button color="inherit" size="small" onClick={handleLogout}>
-                logout
-              </Button>
-              <Typography sx={{ paddingBottom: "3px" }}>{user.name}</Typography>
-              <Avatar alt="avatar">
-                <PersonIcon />
-              </Avatar>
-            </Toolbar>
-          ) : (
-            <Button
-              sx={{
-                display: { xs: `none`, md: `flex` },
-              }}
-              component={Link}
-              color="inherit"
-              to="/login"
-            >
-              login
-            </Button>
-          )}
-        </Toolbar>
-      </AppBar>
-      <Toolbar />
-    </>
+            <Typography sx={{ paddingBottom: "3px" }}>{user.name}</Typography>
+            <Avatar alt="avatar">
+              <PersonIcon />
+            </Avatar>
+          </Toolbar>
+        ) : (
+          <Button
+            sx={{
+              display: { xs: `none`, md: `flex` },
+            }}
+            component={Link}
+            color="inherit"
+            to="/login"
+          >
+            login
+          </Button>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 }
