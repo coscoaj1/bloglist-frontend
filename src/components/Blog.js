@@ -12,6 +12,7 @@ import { IconButton, CardActions, Grid } from "@mui/material/";
 import { useHistory } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 
 const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
   const [expanded, setExpanded] = useState(false);
@@ -43,43 +44,59 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
   }
 
   return (
-    <Container>
-      <Box>
+    <Container id="div">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
         <Card sx={{ maxWidth: 345 }} elevation={12}>
-          <CardContent>
-            <Typography fontWeight="medium" variant="h5">
+          <CardContent
+            sx={{ display: "flex", flexDirection: "column", gap: 1 }}
+          >
+            <Typography fontWeight="bold" variant="h6">
               {blog.title}
             </Typography>{" "}
-            <Typography>{blog.author}</Typography>
+            <Typography fontStyle="italic">{blog.author}</Typography>
             <a href="">
-              <Typography>{blog.url}</Typography>
+              <Typography>
+                <a href={blog.url} target="_blank">
+                  Link to Article
+                </a>
+              </Typography>
             </a>
-            <Typography fontWeight="lighter">{blog.likes} likes</Typography>
             <CardActions
               sx={{
                 width: "100%",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
+                justifyContent: "space-between",
               }}
             >
-              <IconButton
-                id="likeButton"
-                size="small"
-                onClick={() => handleLike(blog)}
-              >
-                <ThumbUpIcon />
-              </IconButton>
-              <IconButton
-                onClick={() => {
-                  handleDelete(blog), history.push("/");
-                }}
-              >
-                <DeleteIcon />
-              </IconButton>
-              <IconButton onClick={handleExpandedClick}>
-                <ModeCommentIcon />
-              </IconButton>
+              <Typography fontWeight="medium">{blog.likes} likes</Typography>
+
+              <Stack direction="row" spacing={2}>
+                <IconButton
+                  id="likeButton"
+                  size="small"
+                  onClick={() => handleLike(blog)}
+                >
+                  <ThumbUpIcon />
+                </IconButton>
+                <IconButton
+                  onClick={() => {
+                    handleDelete(blog), history.push("/");
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+                <IconButton onClick={handleExpandedClick}>
+                  <ModeCommentIcon />
+                </IconButton>
+              </Stack>
             </CardActions>
           </CardContent>
         </Card>
@@ -88,7 +105,6 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             <TextField
               onChange={handleChange}
               value={newComment}
-              color="secondary"
               variant="outlined"
               label="enter comment"
               fullWidth
@@ -96,13 +112,13 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             />
           </form>
         ) : null}
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h4">comments</Typography>
+          {blog.comments.map((comment) => {
+            return <div key={comment.comments}>"{comment.comments}"</div>;
+          })}
+        </Box>
       </Box>
-      <div>
-        <Typography variant="h4">comments</Typography>
-        {blog.comments.map((comment) => {
-          return <div key={comment.comments}>{comment.comments}</div>;
-        })}
-      </div>
     </Container>
   );
 };

@@ -31,13 +31,9 @@ export default function NavBar({ user, handleLogout }) {
           >
             <Button sx={{ mr: 2 }} size="large" component={Link} to="/">
               <LibraryBooks
-                color="secondary"
-                sx={{ width: "40px", height: "40px" }}
+                sx={{ color: "white", width: "40px", height: "40px" }}
               />
             </Button>
-            <Typography sx={{ paddingRight: 2, paddingTop: 1 }} variant="h5">
-              BlogReviews
-            </Typography>
 
             <Button color="inherit" component={Link} to="/blogs">
               blogs

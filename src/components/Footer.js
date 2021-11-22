@@ -4,7 +4,8 @@ import Stack from "@mui/material/Stack";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import { Toolbar } from "@mui/material";
+import { AppBar } from "@mui/material";
 
 function Copyright() {
   return (
@@ -20,7 +21,7 @@ function Copyright() {
 }
 export default function Footer() {
   return (
-    <Box
+    <Toolbar
       component="footer"
       sx={{
         display: "flex",
@@ -28,11 +29,7 @@ export default function Footer() {
         justifyContent: "center",
         alignItems: "center",
         bgcolor: "primary.main",
-        position: "fixed",
-        bottom: 0,
-        left: 0,
         width: "100%",
-        py: 1,
         zIndex: 10,
       }}
     >
@@ -48,6 +45,6 @@ export default function Footer() {
         </Link>
       </Stack>
       <Copyright />
-    </Box>
+    </Toolbar>
   );
 }

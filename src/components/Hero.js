@@ -41,8 +41,8 @@ function Hero({ title, subtitle }) {
           variant="h1"
           align="center"
           gutterBottom
+          color="common.white"
           sx={{
-            color: "secondary.main",
             fontWeight: 400,
           }}
         >
@@ -59,10 +59,15 @@ function Hero({ title, subtitle }) {
         >
           {subtitle}
         </Typography>
-        <Typography component="p" variant="h6" color="secondary" gutterBottom>
+        <Typography
+          component="p"
+          variant="h6"
+          color="common.white"
+          gutterBottom
+        >
           Scroll
         </Typography>
-        <ArrowDownward fontSize="large" color="secondary" />
+        <ArrowDownward fontSize="large" sx={{ color: "white" }} />
       </Grid>
     </Grid>
   );
