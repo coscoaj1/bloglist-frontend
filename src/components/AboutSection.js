@@ -3,7 +3,7 @@ import { ReactComponent as MySvg } from "../assets/undraw_blog_post_re_fy5x.svg"
 import Typography from "@mui/material/Typography";
 const AboutSection = () => {
   return (
-    <Container component="section" maxWidth="md" sx={{ mb: 15 }}>
+    <Container id="div" component="section" maxWidth="md" sx={{ mb: 15 }}>
       <Grid container spacing={3}>
         <Grid
           item
