@@ -5,7 +5,16 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 const AboutSection = ({ user }) => {
   return (
-    <Container component="section" maxWidth="md" sx={{ mb: 15 }}>
+    <Container
+      component="section"
+      maxWidth="md"
+      sx={{
+        mb: 15,
+        backgroundColor: "#F6F9FC",
+        borderRadius: "8px",
+        boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, .2)",
+      }}
+    >
       <Grid container spacing={3}>
         <Grid
           item

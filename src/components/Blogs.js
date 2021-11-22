@@ -19,7 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Blogs = ({ blogs, handleDelete, handleLike }) => {
   return (
-    <Container sx={{ position: "relative" }}>
+    <Container sx={{ position: "relative", backgroundColor: "#F6F9FC" }}>
       <Typography variant="h4">Today's Blogs</Typography>
       <List sx={{ width: "100%", maxWidth: 360 }}>
         {blogs

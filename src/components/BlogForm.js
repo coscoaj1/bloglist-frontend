@@ -45,7 +45,17 @@ const BlogForm = ({ createBlog }) => {
   });
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container
+      sx={{
+        backgroundColor: "#F6F9FC",
+        borderRadius: "8px",
+        boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, .2)",
+        maxHeight: "450px",
+        marginBottom: "6rem",
+      }}
+      component="main"
+      maxWidth="xs"
+    >
       <CssBaseline />
       <Box
         sx={{
