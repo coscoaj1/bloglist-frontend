@@ -12,75 +12,76 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Links from "@mui/material/Link";
 import Coffee from "../assets/coffee-2511065_640.jpg";
-import Animal from "../assets/animal-4701318_640.jpg";
 import Business from "../assets/business-5475283_640.jpg";
 import Cat from "../assets/cat-963931_640.jpg";
-import Salt from "../assets/salt-6728600_640.jpg";
 import Laptop from "../assets/laptop-3087585_640.jpg";
-import SpringRoll from "../assets/spring-roll-6760871_640.jpg";
 import StartUp from "../assets/startup-594090_640.jpg";
-import Child from "../assets/child-6808043_640.png";
 import Code from "../assets/code-1839406_640.jpg";
+import Wordpress from "../assets/wordpress-265132_640.jpg";
+import Word from "../assets/wordpress-923188_640.jpg";
+import LaptopTwo from "../assets/laptop-3087585_640.jpg";
+import Despaired from "../assets/despaired-2261021_640.jpg";
+import Computer from "../assets/computer-2982270_640.jpg";
+import Pencils from "../assets/pencils-762555_640.jpg";
 
 const pics = [
-  Animal,
+  Despaired,
+  Pencils,
+  Computer,
+  Laptop,
+  LaptopTwo,
+  Wordpress,
+  Word,
   Business,
   Cat,
-  Salt,
   Coffee,
-  Laptop,
-  SpringRoll,
   StartUp,
-  Child,
   Code,
 ];
-const pic = pics[Math.floor(Math.random() * pics.length)];
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
 
 const Blogs = ({ blogs, handleDelete, handleLike }) => {
   return (
-    <Container>
+    <Container sx={{ minHeight: "100vh" }}>
       <Typography gutterBottom fontWeight="bold" variant="h5" sx={{ mt: 2 }}>
         Latest Blogs
       </Typography>
       <Typography variant="h6" gutterBottom sx={{ color: "gray" }}>
         Here's what users have shared recently
       </Typography>
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-      >
+      <Grid container spacing={{ xs: 2, md: 3 }}>
         {blogs
           .sort((a, b) => b.likes - a.likes)
           .map((blog) => {
             const pic = pics[Math.floor(Math.random() * pics.length)];
 
             return (
-              <Grid item xs={2} sm={4} md={4} button="true" key={blog.id}>
-                <Card>
+              <Grid item xs={12} sm={6} md={4} button="true" key={blog.id}>
+                <Card sx={{ my: "8px" }}>
                   <CardMedia component="img" height="300" src={pic} alt="" />
-                  <CardContent sx={{ minHeight: "100px" }}>
+                  <CardContent sx={{ minHeight: "120px" }}>
                     <Links
                       underline="none"
                       component={Link}
                       to={`blogs/${blog.id}`}
                     >
-                      <Typography sx={{ textDecoration: "none" }} variant="h6">
+                      <Typography
+                        sx={{
+                          textDecoration: "none",
+                          textTransform: "uppercase",
+                          color: "black",
+                        }}
+                        variant="h6"
+                        gutterBottom
+                        fontWeight="bold"
+                      >
                         {blog.title}
                       </Typography>
                     </Links>
                     <Typography
-                      sx={{ display: "inline" }}
+                      sx={{ display: "inline", color: "gray" }}
                       component="span"
                       variant="body2"
-                      color="text.primary"
+                      gutterBottom
                     >
                       - By {blog.author}
                     </Typography>
