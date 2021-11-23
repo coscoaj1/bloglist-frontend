@@ -133,7 +133,7 @@ const App = (props) => {
   return (
     <Router>
       <NavBar user={user} handleLogout={handleLogout} />
-      <div class="bg">
+      <div>
         <Switch>
           <Route path="/users/:id">
             <User users={users} />

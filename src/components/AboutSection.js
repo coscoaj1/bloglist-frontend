@@ -44,7 +44,7 @@ const AboutSection = ({ user }) => {
             textAlign="center"
             gutterBottom
           >
-            Welcome to Blog Reviews!
+            Welcome to Blog Reviews.
           </Typography>
           <Typography variant="h5" textAlign="center" sx={{ color: "gray" }}>
             {user
