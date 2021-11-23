@@ -7,10 +7,10 @@ const AboutSection = ({ user }) => {
   return (
     <Container
       component="section"
-      maxWidth="md"
+      maxWidth="lg"
       sx={{
-        mb: 15,
         backgroundColor: "#F6F9FC",
+        mb: 15,
         borderRadius: "8px",
         boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, .2)",
       }}
@@ -25,7 +25,7 @@ const AboutSection = ({ user }) => {
           justifyContent="center"
           alignItems="center"
         >
-          <MySvg width={300} height={400} />
+          <MySvg width={400} height={500} />
         </Grid>
         <Grid
           item
@@ -39,16 +39,16 @@ const AboutSection = ({ user }) => {
         >
           {" "}
           <Typography
-            component="h2"
             variant="h4"
+            fontWeight="bold"
             textAlign="center"
             gutterBottom
           >
-            Welcome to BlogReviews!
+            Welcome to Blog Reviews!
           </Typography>
-          <Typography variant="h5" textAlign="center">
+          <Typography variant="h5" textAlign="center" sx={{ color: "gray" }}>
             {user
-              ? `Share your favorite blogs below. Also like and comment on other blogs.`
+              ? `Submit your favorite blogs below. Also like and comment on other blogs.`
               : `Login to share your favorite blog posts. You may also like and comment on other posts.`}
           </Typography>
           {user ? (

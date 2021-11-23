@@ -80,8 +80,8 @@ const BlogForm = ({ createBlog }) => {
             justifyContent: "center",
           }}
         >
-          <Typography component="h1" variant="h5" fontWeight="medium">
-            Add new blog
+          <Typography component="h1" variant="h4" fontWeight="bold">
+            Add a new blog
           </Typography>
 
           <TextField

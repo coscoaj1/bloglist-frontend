@@ -6,13 +6,6 @@ let theme = createTheme({
       main: "#6363ff",
     },
   },
-  typography: {
-    fontFamily: "Quicksand",
-    fontWeightLight: 400,
-    fontWeightRegular: 500,
-    fontWeightMedium: 600,
-    fontWeightBold: 700,
-  },
 });
 
 theme = responsiveFontSizes(theme);

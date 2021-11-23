@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Container from "@mui/material/Container";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import Container from "@mui/material/Container";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Links from "@mui/material/Link";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -19,56 +21,48 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Blogs = ({ blogs, handleDelete, handleLike }) => {
   return (
-    <Container sx={{ position: "relative", backgroundColor: "#F6F9FC" }}>
-      <Typography variant="h4">Today's Blogs</Typography>
-      <List sx={{ width: "100%", maxWidth: 360 }}>
+    <Container>
+      <Typography gutterBottom fontWeight="bold" variant="h5" sx={{ mt: 2 }}>
+        Latest Blogs
+      </Typography>
+      <Typography variant="h6" gutterBottom sx={{ color: "gray" }}>
+        Here's what users have shared recently
+      </Typography>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
         {blogs
           .sort((a, b) => b.likes - a.likes)
           .map((blog) => (
-            <ListItem alignItems="flex-start" button="true" key={blog.id}>
-              <ListItemAvatar>
-                <Avatar />
-              </ListItemAvatar>
-              <ListItemText
-                primary={
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    className="link"
+            <Grid item xs={2} sm={4} md={4} button="true" key={blog.id}>
+              <Card>
+                <CardContent>
+                  <Links
+                    underline="none"
+                    component={Link}
                     to={`blogs/${blog.id}`}
                   >
                     <Typography sx={{ textDecoration: "none" }} variant="h6">
                       {blog.title}
                     </Typography>
-                  </Link>
-                }
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: "inline" }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      - By {blog.author}
-                    </Typography>
-                  </React.Fragment>
-                }
-                variant="h6"
-              ></ListItemText>
-            </ListItem>
+                  </Links>
+                  <Typography
+                    sx={{ display: "inline" }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    - By {blog.author}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
           ))}
-      </List>
+      </Grid>
     </Container>
   );
 };
 
 export default Blogs;
-
-{
-  /* <Blog
-    handleLike={handleLike}
-    handleDelete={handleDelete}
-    key={blog.title}
-    blog={blog}
-/> */
-}

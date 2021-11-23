@@ -37,19 +37,17 @@ function Hero({ title, subtitle }) {
         sx={{ zIndex: 20 }}
       >
         <Typography
-          variant="h1"
+          variant="h2"
           align="center"
           gutterBottom
           color="common.white"
-          sx={{
-            fontWeight: 400,
-          }}
+          fontWeight="bold"
         >
           {title}
         </Typography>
         <Typography
           component="p"
-          variant="h3"
+          variant="h4"
           align="center"
           color="common.white"
           sx={{

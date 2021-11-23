@@ -133,7 +133,7 @@ const App = (props) => {
   return (
     <Router>
       <NavBar user={user} handleLogout={handleLogout} />
-      <div>
+      <div class="bg">
         <Switch>
           <Route path="/users/:id">
             <User users={users} />
@@ -171,7 +171,7 @@ const App = (props) => {
             )}
           </Route>
           <Route path="/">
-            <Hero title="BlogReviews" subtitle="A Blog Sharing App" />
+            <Hero title="Blog Reviews" subtitle="Latest blogs updated daily" />
             <AboutSection user={user} />
             <Notification message={notificationMessage} />
             {user ? <BlogForm createBlog={addBlog} /> : null}
