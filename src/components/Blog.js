@@ -26,6 +26,7 @@ import LaptopTwo from "../assets/laptop-3087585_640.jpg";
 import Despaired from "../assets/despaired-2261021_640.jpg";
 import Computer from "../assets/computer-2982270_640.jpg";
 import Pencils from "../assets/pencils-762555_640.jpg";
+
 const pics = [
   Despaired,
   Pencils,
@@ -40,12 +41,12 @@ const pics = [
   StartUp,
   Code,
 ];
+const pic = pics[Math.floor(Math.random() * pics.length)];
 
 const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
   const [expanded, setExpanded] = useState(false);
   const [newComment, setNewComment] = useState([]);
 
-  const pic = pics[Math.floor(Math.random() * pics.length)];
   let history = useHistory();
 
   const handleExpandedClick = () => {
@@ -78,6 +79,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
         flexDirection: "column",
         alignItems: "center",
         height: "100vh",
+        "& .MuiCardContent-root:last-child": { paddingBottom: 0 },
       }}
     >
       <Card
@@ -95,7 +97,6 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
           }}
         >
           <Stack sx={{ mb: 12 }}>
@@ -105,12 +106,8 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             <Typography sx={{ color: "gray" }} fontStyle="italic" gutterBottom>
               {blog.author}
             </Typography>
-            <a href="">
-              <Typography>
-                <a href={blog.url} target="_blank">
-                  Link to Article
-                </a>
-              </Typography>
+            <a href={blog.url} target="_blank">
+              <Typography>Link to Article</Typography>
             </a>
           </Stack>
           <CardActions
@@ -143,7 +140,11 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             </Stack>
           </CardActions>
         </CardContent>
-        <CardContent sx={{ p: 0 }}>
+        <CardContent
+          sx={{
+            p: 0,
+          }}
+        >
           <CardMedia component="img" height="375" src={pic} alt="" />{" "}
         </CardContent>
       </Card>
