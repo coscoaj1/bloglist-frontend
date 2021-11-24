@@ -26,6 +26,7 @@ import LaptopTwo from "../assets/laptop-3087585_640.jpg";
 import Despaired from "../assets/despaired-2261021_640.jpg";
 import Computer from "../assets/computer-2982270_640.jpg";
 import Pencils from "../assets/pencils-762555_640.jpg";
+import { useTheme } from "@mui/material/styles";
 
 const pics = [
   Despaired,
@@ -42,11 +43,11 @@ const pics = [
   Code,
 ];
 const pic = pics[Math.floor(Math.random() * pics.length)];
-
 const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
   const [expanded, setExpanded] = useState(false);
   const [newComment, setNewComment] = useState([]);
 
+  const theme = useTheme();
   let history = useHistory();
 
   const handleExpandedClick = () => {
@@ -78,8 +79,10 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        height: "100vh",
-        "& .MuiCardContent-root:last-child": { paddingBottom: 0 },
+        minHeight: "100vh",
+        "& .MuiCardContent-root:last-child, & .MuiCardContent-root": {
+          padding: 0,
+        },
       }}
     >
       <Card
@@ -91,6 +94,9 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
           justifyContent: "flex-end",
           alignItems: "center",
           borderRadius: "8px",
+          [theme.breakpoints.down("md")]: {
+            flexDirection: "column-reverse",
+          },
         }}
         elevation={1}
       >
@@ -99,10 +105,23 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             display: "flex",
             width: "500px",
             flexDirection: "column",
+            [theme.breakpoints.down("md")]: {
+              width: "375px",
+              textAlign: "center",
+            },
           }}
         >
           <Stack sx={{ mb: 12 }} spacing={2}>
-            <Typography fontWeight="medium" variant="h5" gutterBottom>
+            <Typography
+              fontWeight="medium"
+              variant="h5"
+              gutterBottom
+              sx={{
+                [theme.breakpoints.down("md")]: {
+                  p: 4,
+                },
+              }}
+            >
               {blog.title}
             </Typography>{" "}
             <Typography sx={{ color: "gray" }} fontStyle="italic" gutterBottom>
@@ -118,6 +137,9 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              [theme.breakpoints.down("md")]: {
+                justifyContent: "space-around",
+              },
             }}
           >
             <Typography fontWeight="medium" sx={{ color: "gray" }}>
@@ -151,7 +173,17 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             p: 0,
           }}
         >
-          <CardMedia component="img" height="350" src={pic} alt="" />{" "}
+          <CardMedia
+            component="img"
+            height="350"
+            src={pic}
+            alt=""
+            sx={{
+              [theme.breakpoints.down("md")]: {
+                width: "375px",
+              },
+            }}
+          />{" "}
         </CardContent>
       </Card>
       {expanded ? (
