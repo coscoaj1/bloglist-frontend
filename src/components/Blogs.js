@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import Avatar from "@mui/material/Avatar";
-import Paper from "@mui/material/Paper";
+import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Container from "@mui/material/Container";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Links from "@mui/material/Link";
@@ -24,6 +22,8 @@ import Despaired from "../assets/despaired-2261021_640.jpg";
 import Computer from "../assets/computer-2982270_640.jpg";
 import Pencils from "../assets/pencils-762555_640.jpg";
 
+import Stack from "@mui/material/Stack";
+
 const pics = [
   Despaired,
   Pencils,
@@ -38,6 +38,12 @@ const pics = [
   StartUp,
   Code,
 ];
+
+const chipList = ["Themes", "Blog", "Posts", "Trending"];
+
+const ListItem = styled("li")(({ theme }) => ({
+  margin: theme.spacing(0.5),
+}));
 
 const Blogs = ({ blogs, handleDelete, handleLike }) => {
   return (
@@ -58,7 +64,33 @@ const Blogs = ({ blogs, handleDelete, handleLike }) => {
               <Grid item xs={12} sm={6} md={4} button="true" key={blog.id}>
                 <Card sx={{ my: "8px" }}>
                   <CardMedia component="img" height="300" src={pic} alt="" />
-                  <CardContent sx={{ minHeight: "120px" }}>
+                  <CardContent
+                    sx={{
+                      minHeight: "175px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Stack
+                      direction="row"
+                      sx={{
+                        display: "flex",
+
+                        justifyContent: "center",
+                        flexWrap: "wrap",
+                        listStyle: "none",
+                        px: 0.5,
+                        mb: 1,
+                        mt: -1,
+                      }}
+                      component="ul"
+                    >
+                      {chipList.map((item) => (
+                        <ListItem key={item}>
+                          <Chip label={item} />
+                        </ListItem>
+                      ))}
+                    </Stack>
                     <Links
                       underline="none"
                       component={Link}
@@ -69,21 +101,27 @@ const Blogs = ({ blogs, handleDelete, handleLike }) => {
                           textDecoration: "none",
                           textTransform: "uppercase",
                           color: "black",
+                          textAlign: "center",
+                          px: 2,
+                          mb: 2,
                         }}
                         variant="h6"
-                        gutterBottom
                         fontWeight="bold"
                       >
                         {blog.title}
                       </Typography>
                     </Links>
                     <Typography
-                      sx={{ display: "inline", color: "gray" }}
+                      sx={{
+                        display: "inline",
+                        color: "gray",
+                        textAlign: "center",
+                      }}
                       component="span"
                       variant="body2"
                       gutterBottom
                     >
-                      - By {blog.author}
+                      {blog.author}
                     </Typography>
                   </CardContent>
                 </Card>
