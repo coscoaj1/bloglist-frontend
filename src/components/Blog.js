@@ -26,8 +26,6 @@ import LaptopTwo from "../assets/laptop-3087585_640.jpg";
 import Despaired from "../assets/despaired-2261021_640.jpg";
 import Computer from "../assets/computer-2982270_640.jpg";
 import Pencils from "../assets/pencils-762555_640.jpg";
-import CssBaseline from "@mui/material/CssBaseline";
-
 const pics = [
   Despaired,
   Pencils,
@@ -88,24 +86,33 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
           flexDirection: "row",
           display: "flex",
           marginTop: 4,
-          padding: 0,
           justifyContent: "flex-end",
           alignItems: "center",
         }}
         elevation={1}
       >
-        <CardContent sx={{ display: "flex", flexDirection: "column" }}>
-          <Typography fontWeight="bold" variant="h5">
-            {blog.title}
-          </Typography>{" "}
-          <Typography fontStyle="italic">{blog.author}</Typography>
-          <a href="">
-            <Typography>
-              <a href={blog.url} target="_blank">
-                Link to Article
-              </a>
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <Stack sx={{ mb: 12 }}>
+            <Typography fontWeight="bold" variant="h5" gutterBottom>
+              {blog.title}
+            </Typography>{" "}
+            <Typography sx={{ color: "gray" }} fontStyle="italic" gutterBottom>
+              {blog.author}
             </Typography>
-          </a>
+            <a href="">
+              <Typography>
+                <a href={blog.url} target="_blank">
+                  Link to Article
+                </a>
+              </Typography>
+            </a>
+          </Stack>
           <CardActions
             sx={{
               width: "100%",
