@@ -62,40 +62,50 @@ const Blogs = ({ blogs, handleDelete, handleLike }) => {
 
             return (
               <Grid item xs={12} sm={6} md={4} button="true" key={blog.id}>
-                <Card sx={{ my: "8px" }}>
-                  <CardMedia component="img" height="300" src={pic} alt="" />
-                  <CardContent
+                <Links
+                  underline="none"
+                  component={Link}
+                  to={`blogs/${blog.id}`}
+                >
+                  <Card
                     sx={{
-                      minHeight: "175px",
-                      display: "flex",
-                      flexDirection: "column",
+                      my: "8px",
+                      borderRadius: "8px",
+                      transition: "transform",
+                      transitionDuration: "250ms",
+                      "&:hover": {
+                        transform: "translate(0px, -5px)",
+                      },
                     }}
                   >
-                    <Stack
-                      direction="row"
+                    <CardMedia component="img" height="300" src={pic} alt="" />
+                    <CardContent
                       sx={{
+                        minHeight: "175px",
                         display: "flex",
-
-                        justifyContent: "center",
-                        flexWrap: "wrap",
-                        listStyle: "none",
-                        px: 0.5,
-                        mb: 1,
-                        mt: -1,
+                        flexDirection: "column",
                       }}
-                      component="ul"
                     >
-                      {chipList.map((item) => (
-                        <ListItem key={item}>
-                          <Chip label={item} />
-                        </ListItem>
-                      ))}
-                    </Stack>
-                    <Links
-                      underline="none"
-                      component={Link}
-                      to={`blogs/${blog.id}`}
-                    >
+                      <Stack
+                        direction="row"
+                        sx={{
+                          display: "flex",
+
+                          justifyContent: "center",
+                          flexWrap: "wrap",
+                          listStyle: "none",
+                          px: 0.5,
+                          mb: 1,
+                          mt: -1,
+                        }}
+                        component="ul"
+                      >
+                        {chipList.map((item) => (
+                          <ListItem key={item}>
+                            <Chip label={item} />
+                          </ListItem>
+                        ))}
+                      </Stack>
                       <Typography
                         sx={{
                           textDecoration: "none",
@@ -110,21 +120,21 @@ const Blogs = ({ blogs, handleDelete, handleLike }) => {
                       >
                         {blog.title}
                       </Typography>
-                    </Links>
-                    <Typography
-                      sx={{
-                        display: "inline",
-                        color: "gray",
-                        textAlign: "center",
-                      }}
-                      component="span"
-                      variant="body2"
-                      gutterBottom
-                    >
-                      {blog.author}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                      <Typography
+                        sx={{
+                          display: "inline",
+                          color: "gray",
+                          textAlign: "center",
+                        }}
+                        component="span"
+                        variant="body2"
+                        gutterBottom
+                      >
+                        {blog.author}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Links>
               </Grid>
             );
           })}

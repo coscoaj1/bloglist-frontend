@@ -90,24 +90,26 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
           marginTop: 4,
           justifyContent: "flex-end",
           alignItems: "center",
+          borderRadius: "8px",
         }}
         elevation={1}
       >
         <CardContent
           sx={{
             display: "flex",
+            width: "500px",
             flexDirection: "column",
           }}
         >
-          <Stack sx={{ mb: 12 }}>
-            <Typography fontWeight="bold" variant="h5" gutterBottom>
+          <Stack sx={{ mb: 12 }} spacing={2}>
+            <Typography fontWeight="medium" variant="h5" gutterBottom>
               {blog.title}
             </Typography>{" "}
             <Typography sx={{ color: "gray" }} fontStyle="italic" gutterBottom>
               {blog.author}
             </Typography>
             <a href={blog.url} target="_blank">
-              <Typography>Link to Article</Typography>
+              <Typography sx={{ color: "gray" }}>Link to Article</Typography>
             </a>
           </Stack>
           <CardActions
@@ -118,23 +120,27 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
               justifyContent: "space-between",
             }}
           >
-            <Typography fontWeight="medium">{blog.likes} likes</Typography>
+            <Typography fontWeight="medium" sx={{ color: "gray" }}>
+              {blog.likes} likes
+            </Typography>
             <Stack direction="row" spacing={2}>
               <IconButton
                 id="likeButton"
+                title="Like"
                 size="small"
                 onClick={() => handleLike(blog)}
               >
                 <ThumbUpIcon />
               </IconButton>
               <IconButton
+                title="Delete"
                 onClick={() => {
                   handleDelete(blog), history.push("/");
                 }}
               >
                 <DeleteIcon />
               </IconButton>
-              <IconButton onClick={handleExpandedClick}>
+              <IconButton title="Comment" onClick={handleExpandedClick}>
                 <ModeCommentIcon />
               </IconButton>
             </Stack>
@@ -145,7 +151,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             p: 0,
           }}
         >
-          <CardMedia component="img" height="375" src={pic} alt="" />{" "}
+          <CardMedia component="img" height="350" src={pic} alt="" />{" "}
         </CardContent>
       </Card>
       {expanded ? (
