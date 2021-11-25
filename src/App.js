@@ -22,6 +22,7 @@ import {
   useHistory,
 } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import Box from "@mui/material/Box";
 
 const App = (props) => {
   const [blogs, setBlogs] = useState([]);
@@ -133,7 +134,11 @@ const App = (props) => {
   return (
     <Router>
       <NavBar user={user} handleLogout={handleLogout} />
-      <div>
+      <Box
+        sx={{
+          BackgroundColor: "#F6F9FC",
+        }}
+      >
         <Switch>
           <Route path="/users/:id">
             <User users={users} />
@@ -147,9 +152,7 @@ const App = (props) => {
               handleLike={handleLike}
             ></Blog>
           </Route>
-          <Route path="/users">
-            <Users users={users} />
-          </Route>
+          <Route path="/users">{/* <Users users={users} /> */}</Route>
           <Route path="/blogs">
             <Blogs
               blogs={blogs}
@@ -178,7 +181,7 @@ const App = (props) => {
           </Route>
         </Switch>
         <ErrorMessage message={errorMessage} />
-      </div>
+      </Box>
       <Footer />
     </Router>
   );
