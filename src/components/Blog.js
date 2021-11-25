@@ -87,11 +87,10 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
     >
       <Card
         sx={{
-          maxWidth: "90vw",
+          width: "90vw",
           flexDirection: "row",
           display: "flex",
           marginTop: 4,
-          justifyContent: "flex-end",
           alignItems: "center",
           borderRadius: "8px",
           [theme.breakpoints.down("md")]: {
@@ -103,7 +102,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
         <CardContent
           sx={{
             display: "flex",
-            width: "500px",
+            width: "65%",
             flexDirection: "column",
             [theme.breakpoints.down("md")]: {
               width: "375px",
@@ -111,7 +110,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             },
           }}
         >
-          <Stack sx={{ mb: 12 }} spacing={2}>
+          <Stack sx={{ mb: 12, p: 2 }} spacing={2}>
             <Typography
               fontWeight="medium"
               variant="h5"
@@ -133,9 +132,10 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
           </Stack>
           <CardActions
             sx={{
-              width: "100%",
+              // width: "100%",
               display: "flex",
               alignItems: "center",
+              p: 2,
               justifyContent: "space-between",
               [theme.breakpoints.down("md")]: {
                 justifyContent: "space-around",
@@ -145,7 +145,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             <Typography fontWeight="medium" sx={{ color: "gray" }}>
               {blog.likes} likes
             </Typography>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} sx={{ pr: 3 }}>
               <IconButton
                 id="likeButton"
                 title="Like"
@@ -175,12 +175,16 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
         >
           <CardMedia
             component="img"
-            height="350"
+            height="auto"
             src={pic}
             alt=""
             sx={{
+              width: "100%",
               [theme.breakpoints.down("md")]: {
-                width: "375px",
+                maxWidth: "450px",
+              },
+              [theme.breakpoints.down("md")]: {
+                maxWidth: "375px",
               },
             }}
           />{" "}

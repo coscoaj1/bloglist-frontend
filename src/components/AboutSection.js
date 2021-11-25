@@ -9,10 +9,9 @@ const AboutSection = ({ user }) => {
       component="section"
       maxWidth="lg"
       sx={{
-        backgroundColor: "#F6F9FC",
+        backgroundColor: "#FFFFFF",
         mb: 15,
         borderRadius: "8px",
-        boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, .2)",
       }}
     >
       <Grid container spacing={3}>
@@ -25,7 +24,7 @@ const AboutSection = ({ user }) => {
           justifyContent="center"
           alignItems="center"
         >
-          <MySvg width={400} height={500} />
+          <MySvg width={350} height={500} />
         </Grid>
         <Grid
           item
@@ -53,7 +52,7 @@ const AboutSection = ({ user }) => {
           </Typography>
           {user ? (
             <Button
-              sx={{ mt: 2 }}
+              sx={{ my: 2 }}
               component={Link}
               variant="contained"
               to="/blogs"
@@ -64,7 +63,7 @@ const AboutSection = ({ user }) => {
             <Button
               component={Link}
               to="/login"
-              sx={{ mt: 2 }}
+              sx={{ my: 2 }}
               variant="contained"
             >
               Login

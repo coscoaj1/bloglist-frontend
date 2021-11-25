@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
+import { useTheme } from "@mui/material/styles";
 
 const BlogSchema = Yup.object().shape({
   title: Yup.string("Enter title")
@@ -27,6 +28,7 @@ const BlogSchema = Yup.object().shape({
 });
 
 const BlogForm = ({ createBlog }) => {
+  const theme = useTheme();
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -47,7 +49,7 @@ const BlogForm = ({ createBlog }) => {
   return (
     <Container
       sx={{
-        backgroundColor: "#F6F9FC",
+        backgroundColor: "#FFFFFF",
         borderRadius: "8px",
         boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, .2)",
         maxHeight: "450px",
@@ -85,7 +87,14 @@ const BlogForm = ({ createBlog }) => {
           </Typography>
 
           <TextField
-            sx={{ minWidth: 400, mb: 3 }}
+            sx={{
+              minWidth: 400,
+              mb: 3,
+              [theme.breakpoints.down("md")]: {
+                minWidth: 350,
+                mb: 0,
+              },
+            }}
             id="title"
             variant="outlined"
             label="title"
@@ -97,7 +106,14 @@ const BlogForm = ({ createBlog }) => {
           />
 
           <TextField
-            sx={{ minWidth: 400, mb: 3 }}
+            sx={{
+              minWidth: 400,
+              mb: 3,
+              [theme.breakpoints.down("md")]: {
+                minWidth: 350,
+                mb: 0,
+              },
+            }}
             id="author"
             variant="outlined"
             label="author"
@@ -108,7 +124,14 @@ const BlogForm = ({ createBlog }) => {
             helperText={formik.touched.author && formik.errors.author}
           />
           <TextField
-            sx={{ minWidth: 400, mb: 3 }}
+            sx={{
+              minWidth: 400,
+              mb: 3,
+              [theme.breakpoints.down("md")]: {
+                minWidth: 350,
+                mb: 1,
+              },
+            }}
             id="url"
             variant="outlined"
             label="url:"

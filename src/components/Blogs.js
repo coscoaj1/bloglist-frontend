@@ -110,6 +110,7 @@ const Blogs = ({ blogs, handleDelete, handleLike }) => {
                         sx={{
                           textDecoration: "none",
                           textTransform: "uppercase",
+                          letterSpacing: "1px",
                           color: "black",
                           textAlign: "center",
                           px: 2,

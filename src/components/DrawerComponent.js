@@ -35,11 +35,11 @@ const DrawerComponent = ({ user, handleLogout }) => {
       icon: <DescriptionIcon />,
       path: "/blogs",
     },
-    {
-      text: "USERS",
-      icon: <PeopleIcon />,
-      path: "/users",
-    },
+    // {
+    //   text: "USERS",
+    //   icon: <PeopleIcon />,
+    //   path: "/users",
+    // },
   ];
   const login = [
     {
