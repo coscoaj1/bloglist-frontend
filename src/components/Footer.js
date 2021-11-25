@@ -29,7 +29,7 @@ export default function Footer() {
         justifyContent: "center",
         alignItems: "center",
         bgcolor: "primary.main",
-        width: "100%",
+        maxWidth: "100vw",
         zIndex: 10,
       }}
     >
