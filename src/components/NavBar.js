@@ -28,7 +28,13 @@ export default function NavBar({ user, handleLogout }) {
             display: { xs: `none`, md: `flex`, justifyContent: "center" },
           }}
         >
-          <Button sx={{ mr: 2 }} size="large" component={Link} to="/">
+          <Button
+            aria-label="logo "
+            sx={{ mr: 2 }}
+            size="large"
+            component={Link}
+            to="/"
+          >
             <LibraryBooks
               sx={{ color: "white", width: "40px", height: "40px" }}
             />

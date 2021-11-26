@@ -155,6 +155,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             </Typography>
             <Stack direction="row" spacing={2} sx={{ pr: 3, gap: 2 }}>
               <StyledIconButton
+                aria-label="like"
                 id="likeButton"
                 title="Like"
                 size="small"
@@ -164,6 +165,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
               </StyledIconButton>
 
               <StyledIconButton
+                aria-label="delete"
                 title="Delete"
                 onClick={() => {
                   handleDelete(blog), history.push("/");
@@ -171,7 +173,11 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
               >
                 <DeleteIcon />
               </StyledIconButton>
-              <StyledIconButton title="Comment" onClick={handleExpandedClick}>
+              <StyledIconButton
+                aria-label="comment"
+                title="Comment"
+                onClick={handleExpandedClick}
+              >
                 <ModeCommentIcon />
               </StyledIconButton>
             </Stack>

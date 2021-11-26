@@ -34,13 +34,25 @@ export default function Footer() {
       }}
     >
       <Stack direction="row" justifyContent="center" spacing={4}>
-        <Link component="button" sx={{ color: `common.white` }}>
+        <Link
+          aria-label="facebook icon"
+          component="button"
+          sx={{ color: `common.white` }}
+        >
           <Facebook fontSize="medium" />
         </Link>
-        <Link component="button" sx={{ color: `common.white` }}>
+        <Link
+          aria-label="instagram icon"
+          component="button"
+          sx={{ color: `common.white` }}
+        >
           <Instagram fontSize="medium" />
         </Link>
-        <Link component="button" sx={{ color: `common.white` }}>
+        <Link
+          aria-label="twitter icon"
+          component="button"
+          sx={{ color: `common.white` }}
+        >
           <Twitter fontSize="medium" />
         </Link>
       </Stack>
