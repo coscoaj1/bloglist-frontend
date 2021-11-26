@@ -59,7 +59,6 @@ const DrawerComponent = ({ user, handleLogout }) => {
     <>
       <Drawer
         anchor="right"
-        aria-label="drawer component"
         onClose={() => setOpenDrawer(false)}
         open={openDrawer}
         sx={{
@@ -124,6 +123,7 @@ const DrawerComponent = ({ user, handleLogout }) => {
       </Drawer>
 
       <IconButton
+        aria-label="menu button"
         sx={{ color: `common.white` }}
         onClick={() => setOpenDrawer(!openDrawer)}
       >
