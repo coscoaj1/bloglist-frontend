@@ -42,15 +42,6 @@ export default function NavBar({ user, handleLogout }) {
           <Button color="inherit" component={Link} to="/blogs">
             blogs
           </Button>
-          {/* <Button
-            color="inherit"
-            component="div"
-            sx={{ flexGrow: 1 }}
-            component={Link}
-            to="/users"
-          >
-            users
-          </Button> */}
         </Box>
         <DrawerComponent handleLogout={handleLogout} user={user} />
         {user ? (

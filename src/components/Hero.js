@@ -47,7 +47,7 @@ function Hero({ title, subtitle }) {
         </Typography>
         <Typography
           component="p"
-          variant="h4"
+          variant="h3"
           align="center"
           color="common.white"
           sx={{
@@ -58,7 +58,7 @@ function Hero({ title, subtitle }) {
         </Typography>
         <Typography
           component="p"
-          variant="h6"
+          variant="h4"
           color="common.white"
           gutterBottom
         >

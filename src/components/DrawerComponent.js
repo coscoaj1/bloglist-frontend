@@ -59,6 +59,7 @@ const DrawerComponent = ({ user, handleLogout }) => {
     <>
       <Drawer
         anchor="right"
+        aria-label="drawer component"
         onClose={() => setOpenDrawer(false)}
         open={openDrawer}
         sx={{
