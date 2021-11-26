@@ -38,6 +38,7 @@ function Hero({ title, subtitle }) {
       >
         <Typography
           variant="h2"
+          component="h1"
           align="center"
           gutterBottom
           color="common.white"
@@ -46,7 +47,7 @@ function Hero({ title, subtitle }) {
           {title}
         </Typography>
         <Typography
-          component="p"
+          component="h2"
           variant="h3"
           align="center"
           color="common.white"
@@ -57,7 +58,7 @@ function Hero({ title, subtitle }) {
           {subtitle}
         </Typography>
         <Typography
-          component="p"
+          component="h3"
           variant="h4"
           color="common.white"
           gutterBottom
