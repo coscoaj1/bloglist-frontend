@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import PersonIcon from "@mui/icons-material/Person";
-import ok from "../ok.png";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/system";
 
@@ -29,7 +28,7 @@ export default function NavBar({ user, handleLogout }) {
           }}
         >
           <Button
-            aria-label="logo "
+            aria-label="logo"
             sx={{ mr: 2 }}
             size="large"
             component={Link}
