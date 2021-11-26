@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Image from "../assets/retrosupply-jLwVAUtLOAQ-unsplash.jpg";
+import Image from "../assets/retro.webp";
 import ArrowDownward from "@mui/icons-material/ArrowDownward";
 function Hero({ title, subtitle }) {
   return (
