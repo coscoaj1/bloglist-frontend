@@ -1,7 +1,7 @@
 import { React, useState } from "react";
+import { LoremIpsum } from "react-lorem-ipsum";
 import "../Index.css";
 import { useParams } from "react-router";
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -27,6 +27,13 @@ import Despaired from "../assets/despaired.webp";
 import Computer from "../assets/computer.webp";
 import Pencils from "../assets/pencils.webp";
 import { useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
+import Chip from "@mui/material/Chip";
+const chipList = ["Themes", "Blog", "Posts", "Trending"];
+
+const ListItem = styled("li")(({ theme }) => ({
+  margin: theme.spacing(0.5),
+}));
 
 const pics = [
   Despaired,
@@ -118,25 +125,60 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             },
           }}
         >
-          <Stack sx={{ mb: 12, p: 2 }} spacing={2}>
+          <Stack sx={{ mb: 12, p: 1, maxHeight: "150px" }} spacing={2}>
             <Typography
-              fontWeight="medium"
-              variant="h5"
-              gutterBottom
               sx={{
                 [theme.breakpoints.down("md")]: {
-                  p: 4,
+                  p: 2,
+                },
+                textDecoration: "none",
+                textTransform: "uppercase",
+                letterSpacing: "1px",
+                color: "black",
+                textAlign: "center",
+                px: 1,
+              }}
+              variant="h6"
+              fontWeight="bold"
+            >
+              {blog.title}
+            </Typography>
+            <Stack
+              direction="row"
+              sx={{
+                display: "flex",
+
+                justifyContent: "center",
+                flexWrap: "wrap",
+                listStyle: "none",
+                px: 0.5,
+              }}
+              component="ul"
+            >
+              {chipList.map((item) => (
+                <ListItem key={item}>
+                  <Chip color="primary" label={item} variant="filled" />
+                </ListItem>
+              ))}
+            </Stack>
+            <Typography variant="subtitle2" fontStyle="italic" gutterBottom>
+              {blog.author}
+            </Typography>
+
+            <a href={blog.url} target="_blank">
+              <Typography sx={{ color: "darkgray" }}>
+                Link to Article
+              </Typography>
+            </a>
+            <Typography
+              sx={{
+                [theme.breakpoints.down("xl")]: {
+                  display: "none",
                 },
               }}
             >
-              {blog.title}
-            </Typography>{" "}
-            <Typography sx={{ color: "gray" }} fontStyle="italic" gutterBottom>
-              {blog.author}
+              <LoremIpsum avgSentencesPerParagraph={4} />
             </Typography>
-            <a href={blog.url} target="_blank">
-              <Typography sx={{ color: "gray" }}>Link to Article</Typography>
-            </a>
           </Stack>
           <CardActions
             sx={{
@@ -190,13 +232,11 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
         >
           <CardMedia
             component="img"
-            height="auto"
             src={pic}
             alt=""
             sx={{
-              width: "100%",
               [theme.breakpoints.down("md")]: {
-                maxWidth: "450px",
+                maxWidth: "550px",
               },
               [theme.breakpoints.down("md")]: {
                 maxWidth: "375px",
@@ -217,7 +257,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
           />
         </form>
       ) : null}
-      <Box sx={{ mt: 4 }}>
+      <Box sx={{ mt: 4, mb: 4 }}>
         <Typography variant="h4">comments</Typography>
         {blog.comments.map((comment) => {
           return <div key={comment.comments}>"{comment.comments}"</div>;
