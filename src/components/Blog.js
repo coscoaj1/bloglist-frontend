@@ -172,7 +172,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             </a>
             <Typography
               sx={{
-                [theme.breakpoints.down("xl")]: {
+                [theme.breakpoints.down("lg")]: {
                   display: "none",
                 },
               }}
