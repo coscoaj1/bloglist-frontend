@@ -3,10 +3,7 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardActionArea from "@mui/material/CardActionArea";
 import Typography from "@mui/material/Typography";
-import Ma from "../Ma.jpg";
-import Ok from "../ok.png";
-import Whitey from "../Whitey.jpg";
-import Sid from "../Sid.jpg";
+
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 
@@ -20,15 +17,15 @@ const User = ({ users }) => {
 
   let cat = {};
 
-  if (showUser.name === "Ma") {
-    cat.cat = Ma;
-  } else if (showUser.name === "orange") {
-    cat.cat = Ok;
-  } else if (showUser.name === "Sid") {
-    cat.cat = Sid;
-  } else if (showUser.name === "whitey") {
-    cat.cat = Whitey;
-  }
+  // if (showUser.name === "Ma") {
+  //   cat.cat = Ma;
+  // } else if (showUser.name === "orange") {
+  //   cat.cat = Ok;
+  // } else if (showUser.name === "Sid") {
+  //   cat.cat = Sid;
+  // } else if (showUser.name === "whitey") {
+  //   cat.cat = Whitey;
+  // }
 
   return (
     <Container

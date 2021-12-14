@@ -37,7 +37,7 @@ function Hero({ title, subtitle }) {
         sx={{ zIndex: 20 }}
       >
         <Typography
-          variant="h2"
+          variant="h1"
           component="h1"
           align="center"
           gutterBottom
@@ -48,7 +48,7 @@ function Hero({ title, subtitle }) {
         </Typography>
         <Typography
           component="h2"
-          variant="h3"
+          variant="h4"
           align="center"
           color="common.white"
           sx={{
@@ -57,14 +57,7 @@ function Hero({ title, subtitle }) {
         >
           {subtitle}
         </Typography>
-        <Typography
-          component="h3"
-          variant="h4"
-          color="common.white"
-          gutterBottom
-        >
-          Scroll
-        </Typography>
+
         <ArrowDownward fontSize="large" sx={{ color: "white" }} />
       </Grid>
     </Grid>

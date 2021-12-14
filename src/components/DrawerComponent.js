@@ -14,7 +14,6 @@ import Avatar from "@mui/material/Avatar";
 import DescriptionIcon from "@mui/icons-material/Description";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useHistory } from "react-router-dom";
-import ok from "../ok.png";
 
 const DrawerComponent = ({ user, handleLogout }) => {
   const [openDrawer, setOpenDrawer] = useState(false);

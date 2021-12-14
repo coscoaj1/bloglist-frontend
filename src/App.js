@@ -174,7 +174,7 @@ const App = (props) => {
             )}
           </Route>
           <Route path="/">
-            <Hero title="Blog Reviews" subtitle="Latest blogs updated daily" />
+            <Hero title="Blog Reviews" subtitle="Share your favorite blogs." />
             <AboutSection user={user} />
             <Notification message={notificationMessage} />
             {user ? <BlogForm createBlog={addBlog} /> : null}

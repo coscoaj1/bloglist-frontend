@@ -170,7 +170,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
                 Link to Article
               </Typography>
             </a>
-            <Typography
+            {/* <Typography
               sx={{
                 [theme.breakpoints.down("lg")]: {
                   display: "none",
@@ -178,7 +178,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
               }}
             >
               <LoremIpsum avgSentencesPerParagraph={4} />
-            </Typography>
+            </Typography> */}
           </Stack>
           <CardActions
             sx={{

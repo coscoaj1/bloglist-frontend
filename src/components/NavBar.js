@@ -40,7 +40,7 @@ export default function NavBar({ user, handleLogout }) {
           </Button>
 
           <Button color="inherit" component={Link} to="/blogs">
-            blogs
+            <Typography variant="h6">blogs</Typography>
           </Button>
         </Box>
         <DrawerComponent handleLogout={handleLogout} user={user} />
@@ -52,10 +52,12 @@ export default function NavBar({ user, handleLogout }) {
               gap: "1rem",
             }}
           >
-            <Button color="inherit" size="small" onClick={handleLogout}>
-              logout
+            <Button color="inherit" onClick={handleLogout}>
+              <Typography variant="h6">logout</Typography>
             </Button>
-            <Typography sx={{ paddingBottom: "3px" }}>{user.name}</Typography>
+            <Typography sx={{ paddingBottom: "3px" }} variant="h6">
+              {user.name}
+            </Typography>
             <Avatar alt="avatar">
               <PersonIcon />
             </Avatar>
@@ -69,7 +71,7 @@ export default function NavBar({ user, handleLogout }) {
             color="inherit"
             to="/login"
           >
-            login
+            <Typography variant="h6">login</Typography>
           </Button>
         )}
       </Toolbar>
