@@ -53,9 +53,9 @@ export default function NavBar({ user, handleLogout }) {
             }}
           >
             <Button color="inherit" onClick={handleLogout}>
-              <Typography variant="h6">logout</Typography>
+              <Typography variant="h7">logout</Typography>
             </Button>
-            <Typography sx={{ paddingBottom: "3px" }} variant="h6">
+            <Typography sx={{ paddingBottom: "3px" }} variant="h7">
               {user.name}
             </Typography>
             <Avatar alt="avatar">
@@ -71,7 +71,7 @@ export default function NavBar({ user, handleLogout }) {
             color="inherit"
             to="/login"
           >
-            <Typography variant="h6">login</Typography>
+            <Typography variant="h7">login</Typography>
           </Button>
         )}
       </Toolbar>
