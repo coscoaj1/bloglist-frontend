@@ -126,7 +126,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             },
           }}
         >
-          <Stack sx={{ mb: 12, p: 0, maxHeight: "150px" }} spacing={2}>
+          <Stack sx={{ mb: 12, p: 2, maxHeight: "150px" }} spacing={2}>
             <Typography
               sx={{
                 [theme.breakpoints.down("md")]: {
@@ -137,7 +137,6 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
                 letterSpacing: "1px",
                 color: "black",
                 textAlign: "center",
-                px: 1,
               }}
               variant="h6"
               fontWeight="bold"
