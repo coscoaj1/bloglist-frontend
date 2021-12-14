@@ -92,6 +92,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
     <Box
       sx={{
         display: "flex",
+        margin: 0,
         flexDirection: "column",
         alignItems: "center",
         minHeight: "100vh",
@@ -102,7 +103,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
     >
       <Card
         sx={{
-          width: "90vw",
+          width: "85vw",
           flexDirection: "row",
           display: "flex",
           marginTop: 4,
@@ -125,7 +126,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             },
           }}
         >
-          <Stack sx={{ mb: 12, p: 1, maxHeight: "150px" }} spacing={2}>
+          <Stack sx={{ mb: 12, p: 0, maxHeight: "150px" }} spacing={2}>
             <Typography
               sx={{
                 [theme.breakpoints.down("md")]: {
@@ -170,22 +171,25 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
                 Link to Article
               </Typography>
             </a>
-            {/* <Typography
+            <Typography
               sx={{
                 [theme.breakpoints.down("lg")]: {
                   display: "none",
                 },
               }}
             >
-              <LoremIpsum avgSentencesPerParagraph={4} />
-            </Typography> */}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac
+              sapien consequat justo volutpat dapibus. In bibendum eros eu
+              bibendum posuere. Integer bibendum sem augue, non pretium est
+              imperdiet sit amet. Sed at tincidunt est, in varius tellus.
+            </Typography>
           </Stack>
           <CardActions
             sx={{
               width: "100%",
               display: "flex",
               alignItems: "center",
-              p: 2,
+              paddingTop: 4,
               justifyContent: "space-between",
               [theme.breakpoints.down("md")]: {
                 justifyContent: "space-around",
@@ -246,7 +250,13 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
         </CardContent>
       </Card>
       {expanded ? (
-        <form noValidate autoComplete="off" onSubmit={addComment}>
+        <Box
+          component="form"
+          minWidth={350}
+          noValidate
+          autoComplete="off"
+          onSubmit={addComment}
+        >
           <TextField
             onChange={handleChange}
             value={newComment}
@@ -255,7 +265,7 @@ const Blog = ({ blogs, handleLike, createComment, handleDelete }) => {
             fullWidth
             sx={{ marginTop: "2rem" }}
           />
-        </form>
+        </Box>
       ) : null}
       <Box sx={{ mt: 4, mb: 4 }}>
         <Typography variant="h4">comments</Typography>
